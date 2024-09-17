@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Roteador from './componentes/Roteador';
+import Roteador from './Roteador';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
