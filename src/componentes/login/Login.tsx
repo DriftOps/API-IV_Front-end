@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Substitua useHistory por useNavigate
+import './index.css';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -17,8 +18,8 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', width: '300px' }}>
+    <div className='background'>
+      <form className='form-container' onSubmit={handleLogin}>
         <h1 style={{ textAlign: 'center' }}>Login</h1>
         <p style={{ textAlign: 'center' }}>Novo no site? <a href="/register">Registre-se</a></p>
         <label>Email *</label>

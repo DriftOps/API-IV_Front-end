@@ -1,0 +1,27 @@
+.background {
+    background-color: #00bcd4;  
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box; 
+}
+
+.button-login{
+    background-color: 'black';
+    padding: '10px';
+    color: 'white' ;
+}
