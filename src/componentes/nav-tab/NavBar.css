@@ -1,0 +1,50 @@
+body{
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #0a4c71; /* cor azul */
+    padding: 10px;
+  }
+  
+  .back-button {
+    cursor: pointer;
+    color: rgb(248, 245, 245);
+    font-size: 25px;
+    
+  }
+  
+  .nav-items {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-item {
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 2%;
+  }
+  
+  .img{
+    margin: auto;
+    display: block;
+  }
+
+  
+  .nav-item:hover {
+    color: #ccc; /* cor de hover */
+  }
+
+  ul{
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0;
+  }
+
+
+  
+
+  
