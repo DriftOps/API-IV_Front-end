@@ -4,15 +4,16 @@ import Login from './componentes/login/Login';
 import Processos from './componentes/Processos';
 import NavTab from './componentes/nav-tab/nav-tab'
 import Sidebar from './componentes/sidebar/sidebar';
+import NavTabPerfil from './componentes/nav-tab/nav-tab-perfil';
 
 const Roteador: React.FC = () => {
   return (
-    <Router>
-      <NavTab /> {/* Certifique-se de que o Header é exibido em todas as páginas */}    
+    <Router>   
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/processos" element={<Processos />} />
+        <Route path="/processos" element={<><NavTab/> <Processos /> </>} />
+        <Route path="/nav-tab-perfil" element={<NavTabPerfil />} />
       </Routes>
     </Router>
   );
