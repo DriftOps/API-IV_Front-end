@@ -20,8 +20,17 @@ const Header: React.FC = () => {
         <Link to="/nav-tab-perfil" className='back-button'>  &larr;</Link>
         </span>
           </div>
-        <span  className="nav-item">
-          <Link to="/processos" className='nav-item'>Processos</Link>
+          <span  className="nav-item">
+          <Link to="/tarefas" className='nav-item'>Tarefas</Link>
+          </span>
+        <span className="nav-item ">
+        <Link to="/perfil" className='nav-item'>Perfil</Link>
+          </span>
+          <span className="nav-item ">
+        <Link to="/informativos" className='nav-item'>Informativos</Link>
+          </span>
+          <span className="nav-item ">
+        <Link to="/processos" className='nav-item'>Processos</Link>
           </span>
         <span className="nav-item ">
         <Link to="/historico" className='nav-item'>Histórico</Link>

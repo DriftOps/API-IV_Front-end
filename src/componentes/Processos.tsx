@@ -1,38 +1,37 @@
 import React, { useState } from 'react';
+import './Processos.css';
 import OrderDropdown from './OrderDropdown';
 import OrderTimeline from './OrderTimeline';
+import CadastroPopup from './CadastroPopup';
 
 const Processos: React.FC = () => {
-  const orders = [
-    { id: '09878', name: 'Processo 09878' },
-    { id: '12345', name: 'Processo 12345' },
-    { id: '54321', name: 'Processo 54321' }
-  ];
+  const [selectedProcesso, setSelectedProcesso] = useState<string | null>(null);
+  const [isCadastroOpen, setIsCadastroOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const [selectedOrder, setSelectedOrder] = useState<string | null>(null);
-
-  const events = {
+  // Simulando os processos já cadastrados
+  const processos = {
     '09878': [
-      { 
-        status: 'Operacional', 
-        location: 'Cibitung Jakarta Indonesia', 
-        date: '16 Nov 2021 18:10:05', 
+      {
+        status: 'Operacional',
+        location: 'Cibitung Jakarta Indonesia',
+        date: '16 Nov 2021 18:10:05',
         details: 'O sistema operacional foi atualizado com sucesso e os testes de rede foram concluídos.',
         responsavel: 'João Da Silva',
         outrasInformacoes: 'Atualização do sistema'
       },
-      { 
-        status: 'Dispositivos De Backup', 
-        location: 'Assinatura de confirmação', 
-        date: '16 Nov 2021 18:15:00', 
+      {
+        status: 'Dispositivos De Backup',
+        location: 'Assinatura de confirmação',
+        date: '16 Nov 2021 18:15:00',
         details: 'João assinou a confirmação após verificação dos dispositivos de backup.',
         responsavel: 'João Da Silva',
         outrasInformacoes: 'Verificação dos dispositivos de backup'
       },
-      { 
-        status: 'Comercial', 
-        location: 'Karawang Indonesia', 
-        date: '16 Nov 2021 18:23:05', 
+      {
+        status: 'Comercial',
+        location: 'Karawang Indonesia',
+        date: '16 Nov 2021 18:23:05',
         details: 'A equipe comercial aprovou os relatórios financeiros do último trimestre. Clique para ver o mapa.',
         responsavel: 'Livia Andrade',
         outrasInformacoes: 'Aprovação dos relatórios financeiros'
@@ -79,18 +78,37 @@ const Processos: React.FC = () => {
   };
 
   const handleSelectOrder = (orderId: string) => {
-    setSelectedOrder(orderId);
+    setSelectedProcesso(orderId);
   };
 
+  const handleCadastroClick = () => {
+    setIsCadastroOpen(true);
+  };
+
+  const filteredProcessos = Object.keys(processos).filter((id) =>
+    id.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>Lista de Processos</h2>
-      <OrderDropdown orders={orders} onSelectOrder={handleSelectOrder} />
-      {selectedOrder ? (
-        <OrderTimeline events={events[selectedOrder]} />
+    <div className="container">
+      <div className="header">
+        <OrderDropdown orders={Object.keys(processos).map((id) => ({ id, name: `Processo ${id}` }))} onSelectOrder={handleSelectOrder} />
+        <button className="cadastro-button" onClick={handleCadastroClick}>Cadastro +</button>
+      </div>
+      <input 
+        type="search" 
+        className="search-input" 
+        value={searchQuery} 
+        onChange={(e) => setSearchQuery(e.target.value)} 
+        placeholder="Pesquisar processo" 
+      />
+      {selectedProcesso && processos[selectedProcesso] ? (
+        <OrderTimeline events={processos[selectedProcesso]} />
       ) : (
-        <p>Selecione uma ordem para ver os detalhes.</p>
+        <p>Selecione um processo ou faça uma pesquisa.</p>
       )}
+      
+      {isCadastroOpen && <CadastroPopup onClose={() => setIsCadastroOpen(false)} />}
     </div>
   );
 };

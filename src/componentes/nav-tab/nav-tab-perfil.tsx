@@ -27,6 +27,12 @@ const Header: React.FC = () => {
           <span className="nav-item ">
         <Link to="/informativos" className='nav-item'>Informativos</Link>
           </span>
+          <span className="nav-item ">
+        <Link to="/processos" className='nav-item'>Processos</Link>
+          </span>
+          <span className="nav-item ">
+        <Link to="/historico" className='nav-item'>Histórico</Link>
+          </span>
       </div>
     </div>
       </div>
