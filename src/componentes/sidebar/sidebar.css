@@ -11,12 +11,12 @@ body {
 }
 
 i {
-  color: #5A5A5A;
+  color: white;
 }
 
 nav {
   position: fixed;
-  top: 0;
+  top: 30px;
   left: 0;
   height: 70px;
   width: 100%;
@@ -27,7 +27,7 @@ nav {
 .logo .menu-icon {
   color: black;
   font-size: 24px;
-  margin-right: 15px;
+  margin-right: 1px;
   cursor: pointer;
 }
 
@@ -66,9 +66,9 @@ nav {
   height: 100%;
   width: 260px;
   padding: 20px 0;
-  background-color: #F4F5F7; 
+  background-color: white;
   transition: transform 0.4s ease;
-  z-index: 100; 
+  z-index: 1000;
 }
 
 .sidebar.open {
@@ -153,15 +153,15 @@ nav.open .sidebar {
   top: 0;
   right: 0;
   height: 100vh;
-  width: 79%;
-  background: rgba(0, 0, 0, 0.3); 
+  width: 79.5%; 
+  background: rgba(0, 0, 0, 0.3);
   opacity: 0;
-  pointer-events: none;
+  pointer-events: none; 
   transition: opacity 0.4s ease;
-  z-index: 50; 
+  z-index: 900; 
 }
 
 nav.open ~ .overlay {
   opacity: 1;
-  pointer-events: auto;
+  pointer-events: auto; 
 }

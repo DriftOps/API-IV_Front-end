@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './NavBar.css'; // Estilos separados em CSS
+import './NavBar.css';
+import Sidebar from '../sidebar/sidebar';
 
 
 const Header: React.FC = () => {
@@ -17,7 +18,7 @@ const Header: React.FC = () => {
       <div className="nav-items">
       <div className="back-button">
       <span>
-        <Link to="/nav-tab-perfil" className='back-button'>  &larr;</Link>
+        <Sidebar/>
         </span>
           </div>
           <span  className="nav-item">

@@ -13,7 +13,7 @@ const Roteador: React.FC = () => {
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/processos" element={<><NavTab/> <Processos /> </>} />
-        <Route path="/nav-tab-perfil" element={<NavTabPerfil />} />
+        <Route path="/perfil" element={<NavTabPerfil />} />
       </Routes>
     </Router>
   );
