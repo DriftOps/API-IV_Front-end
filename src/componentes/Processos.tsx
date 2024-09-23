@@ -4,78 +4,91 @@ import OrderDropdown from './OrderDropdown';
 import OrderTimeline from './OrderTimeline';
 import CadastroPopup from './CadastroPopup';
 
+interface Event {
+  status: string;
+  location: string;
+  date: string;
+  details: string;
+  responsavel: string;
+  outrasInformacoes: string;
+}
+
+interface Processo {
+  id: string;
+  events: Event[];
+}
+
 const Processos: React.FC = () => {
   const [selectedProcesso, setSelectedProcesso] = useState<string | null>(null);
   const [isCadastroOpen, setIsCadastroOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [openDetails, setOpenDetails] = useState<{ [key: string]: number | null }>({});
 
-  // Simulando os processos já cadastrados
-  const processos = {
-    '09878': [
-      {
-        status: 'Operacional',
-        location: 'Cibitung Jakarta Indonesia',
-        date: '16 Nov 2021 18:10:05',
-        details: 'O sistema operacional foi atualizado com sucesso e os testes de rede foram concluídos.',
-        responsavel: 'João Da Silva',
-        outrasInformacoes: 'Atualização do sistema'
-      },
-      {
-        status: 'Dispositivos De Backup',
-        location: 'Assinatura de confirmação',
-        date: '16 Nov 2021 18:15:00',
-        details: 'João assinou a confirmação após verificação dos dispositivos de backup.',
-        responsavel: 'João Da Silva',
-        outrasInformacoes: 'Verificação dos dispositivos de backup'
-      },
-      {
-        status: 'Comercial',
-        location: 'Karawang Indonesia',
-        date: '16 Nov 2021 18:23:05',
-        details: 'A equipe comercial aprovou os relatórios financeiros do último trimestre. Clique para ver o mapa.',
-        responsavel: 'Livia Andrade',
-        outrasInformacoes: 'Aprovação dos relatórios financeiros'
-      }
-    ],
-    
-    '12345': [
-      { 
-        status: 'Preparação', 
-        location: 'São Paulo Brasil', 
-        date: '10 Ago 2022 14:10:05', 
-        details: 'Documentos fiscais gerados e a verificação inicial de inventário foi concluída.',
-        responsavel: 'Carlos Mendes',
-        outrasInformacoes: 'Preparação e verificação de documentos fiscais'
-      },
-      { 
-        status: 'Envio', 
-        location: 'Brasília Brasil', 
-        date: '10 Ago 2022 14:15:00', 
-        details: 'O pacote foi enviado por transportadora local, previsão de entrega em 5 dias úteis.',
-        responsavel: 'Fernanda Souza',
-        outrasInformacoes: 'Envio de pacote com previsão de entrega'
-      }
-    ],
-  
-    '54321': [
-      { 
-        status: 'Recebido', 
-        location: 'Lisboa Portugal', 
-        date: '15 Dez 2022 08:10:05', 
-        details: 'Documentos processados na aduana de Lisboa e autorização de importação concedida.',
-        responsavel: 'Joana Pereira',
-        outrasInformacoes: 'Recebimento e processamento de documentos'
-      },
-      { 
-        status: 'Processado', 
-        location: 'Madrid Espanha', 
-        date: '15 Dez 2022 08:15:00', 
-        details: 'Os itens foram processados no centro logístico de Madrid e estão prontos para transporte interno.',
-        responsavel: 'Pedro Alonso',
-        outrasInformacoes: 'Processamento dos itens no centro logístico'
-      }
-    ]
-  };
+  const processos: Processo[] = [
+    {
+      id: '12345',
+      events: [
+        {
+          status: 'Preparação',
+          location: 'São Paulo, Brasil',
+          date: '10 Ago 2022 14:10:05',
+          details: 'Documentos fiscais gerados e a verificação inicial de inventário foi concluída.',
+          responsavel: 'Carlos Mendes',
+          outrasInformacoes: 'Preparação e verificação de documentos fiscais',
+        },
+        {
+          status: 'Envio',
+          location: 'Brasília, Brasil',
+          date: '10 Ago 2022 14:15:00',
+          details: 'O pacote foi enviado por transportadora local, previsão de entrega em 5 dias úteis.',
+          responsavel: 'Fernanda Souza',
+          outrasInformacoes: 'Envio de pacote com previsão de entrega',
+        },
+      ],
+    },
+    {
+      id: '54321',
+      events: [
+        {
+          status: 'Recebido',
+          location: 'Lisboa, Portugal',
+          date: '15 Dez 2022 08:10:05',
+          details: 'Documentos processados na aduana de Lisboa e autorização de importação concedida.',
+          responsavel: 'Joana Pereira',
+          outrasInformacoes: 'Recebimento e processamento de documentos',
+        },
+        {
+          status: 'Processado',
+          location: 'Madrid, Espanha',
+          date: '15 Dez 2022 08:15:00',
+          details: 'Os itens foram processados no centro logístico de Madrid e estão prontos para transporte interno.',
+          responsavel: 'Pedro Alonso',
+          outrasInformacoes: 'Processamento dos itens no centro logístico',
+        },
+      ],
+    },
+    {
+      id: '09879',
+      events: [
+        {
+          status: 'Operacional',
+          location: 'Cibitung, Jakarta, Indonésia',
+          date: '16 Nov 2021 18:10:05',
+          details: 'O sistema operacional foi atualizado com sucesso e os testes de rede foram concluídos.',
+          responsavel: 'João Da Silva',
+          outrasInformacoes: 'Atualização do sistema',
+        },
+        {
+          status: 'Comercial',
+          location: 'Karawang, Indonésia',
+          date: '16 Nov 2021 16:23:05',
+          details: 'A equipe comercial aprovou os relatórios financeiros do último trimestre.',
+          responsavel: 'Livia Andrade',
+          outrasInformacoes: 'Aprovação dos relatórios financeiros',
+        },
+      ],
+    },
+  ];
 
   const handleSelectOrder = (orderId: string) => {
     setSelectedProcesso(orderId);
@@ -85,16 +98,29 @@ const Processos: React.FC = () => {
     setIsCadastroOpen(true);
   };
 
-  const filteredProcessos = Object.keys(processos).filter((id) =>
-    id.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredProcessos = processos.filter((processo) =>
+    processo.id.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const toggleDetails = (processoId: string, eventIndex: number) => {
+    setOpenDetails((prevDetails) => ({
+      ...prevDetails,
+      [processoId]: prevDetails[processoId] === eventIndex ? null : eventIndex,
+    }));
+  };
 
   return (
     <div className="container">
       <div className="header">
-        <OrderDropdown orders={Object.keys(processos).map((id) => ({ id, name: `Processo ${id}` }))} onSelectOrder={handleSelectOrder} />
-        <button className="cadastro-button" onClick={handleCadastroClick}>Cadastro +</button>
+        <OrderDropdown 
+          orders={processos.map(({ id }) => ({ id, name: `Processo ${id}` }))} 
+          onSelectOrder={handleSelectOrder} 
+        />
+        <button className="cadastro-button" onClick={handleCadastroClick}>
+          Cadastro +
+        </button>
       </div>
+
       <input 
         type="search" 
         className="search-input" 
@@ -102,13 +128,43 @@ const Processos: React.FC = () => {
         onChange={(e) => setSearchQuery(e.target.value)} 
         placeholder="Pesquisar processo" 
       />
-      {selectedProcesso && processos[selectedProcesso] ? (
-        <OrderTimeline events={processos[selectedProcesso]} />
+
+      {selectedProcesso && processos.find(p => p.id === selectedProcesso) ? (
+        <OrderTimeline events={processos.find(p => p.id === selectedProcesso)!.events} />
       ) : (
         <p>Selecione um processo ou faça uma pesquisa.</p>
       )}
-      
+
       {isCadastroOpen && <CadastroPopup onClose={() => setIsCadastroOpen(false)} />}
+
+      {filteredProcessos.map((processo) => (
+        <div key={processo.id} className="processo-card">
+          <h3 className="processo-title">{processo.id}</h3>
+          {processo.events.map((event, index) => (
+            <div key={index} className="event-item">
+              <h4 className={`event-status ${index === processo.events.length - 1 ? 'completed' : ''}`}>
+                {event.status}
+              </h4>
+              <p className="event-info">
+                {event.location} - {event.date}
+              </p>
+              <button
+                onClick={() => toggleDetails(processo.id, index)}
+                className="event-details-button"
+              >
+                {openDetails[processo.id] === index ? 'Ocultar Detalhes' : 'Ver Detalhes'}
+              </button>
+              {openDetails[processo.id] === index && (
+                <div className="event-details">
+                  <p><strong>Detalhes:</strong> {event.details}</p>
+                  <p><strong>Responsável:</strong> {event.responsavel}</p>
+                  <p><strong>Outras informações:</strong> {event.outrasInformacoes}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
 };
