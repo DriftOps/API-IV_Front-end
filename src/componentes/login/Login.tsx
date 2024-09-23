@@ -21,7 +21,6 @@ const Login: React.FC = () => {
     <div className='background'>
       <form className='form-container' onSubmit={handleLogin}>
         <h1 style={{ textAlign: 'center' }}>Login</h1>
-        <p style={{ textAlign: 'center' }}>Novo no site? <a href="/register">Registre-se</a></p>
         <label>Email *</label>
         <input
           type="email"
