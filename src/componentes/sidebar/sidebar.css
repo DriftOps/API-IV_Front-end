@@ -11,12 +11,16 @@ body {
 }
 
 i {
+  color: rgb(0, 0, 0);
+}
+
+.bx-menu {
   color: white;
 }
 
 nav {
-  position: fixed;
-  top: 30px;
+  position: absolute;
+  top: 28px;
   left: 0;
   height: 70px;
   width: 100%;
@@ -53,10 +57,6 @@ nav {
 
 .menu-button:focus {
   outline: none;
-}
-
-.menu-button:hover i {
-  color: #1137FC;
 }
 
 .sidebar {
@@ -131,7 +131,7 @@ nav.open .sidebar {
 
 .lists .nav-link:hover i,
 .lists .nav-link:hover .link {
-  color: #1137FC; 
+  color: #16639d; 
 }
 
 .bottom-content h5 {
@@ -153,15 +153,16 @@ nav.open .sidebar {
   top: 0;
   right: 0;
   height: 100vh;
-  width: 79.5%; 
+  width: 79%;
   background: rgba(0, 0, 0, 0.3);
   opacity: 0;
-  pointer-events: none; 
-  transition: opacity 0.4s ease;
-  z-index: 900; 
+  pointer-events: none;
+  transition: opacity 0.4s ease; 
+  z-index: 1; 
 }
 
 nav.open ~ .overlay {
   opacity: 1;
-  pointer-events: auto; 
+  pointer-events: auto;
+  z-index: 1; 
 }

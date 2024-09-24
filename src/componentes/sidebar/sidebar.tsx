@@ -44,7 +44,7 @@ export default class Sidebar extends Component<{}, State> {
                     <li className="list">
                       <a href="#" className="nav-link">
                         <i className="bx bxs-dashboard"></i>
-                        <span className="link">Principal</span>
+                        <span className="link">Usuário</span>
                       </a>
                     </li>
                     <li className="list">
