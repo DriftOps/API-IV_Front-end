@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './componentes/login/Login';
 import Processos from './componentes/Processos';
 import NavTab from './componentes/nav-tab/nav-tab'
-import Sidebar from './componentes/sidebar/sidebar';
 import NavTabPerfil from './componentes/nav-tab/nav-tab-perfil';
+import Profile from './componentes/Perfil';
 
 const Roteador: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ const Roteador: React.FC = () => {
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/processos" element={<><NavTab/> <Processos /> </>} />
-        <Route path="/perfil" element={<NavTabPerfil />} />
+        <Route path="/perfil" element={<><NavTabPerfil /> <Profile /> </>} />
       </Routes>
     </Router>
   );

@@ -1,16 +1,16 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './NavBar.css'; // Estilos separados em CSS
+import './NavBar.css';
+import { Component } from 'react';
 
 
-const Header: React.FC = () => {
+export default class Header extends Component {
+  render() {
   return (
-    <header style={{}}>
-
+    <header>
       
     </header>
-  );
+    );
+  }
 };
-
-export default Header;

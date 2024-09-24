@@ -3,12 +3,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 import Sidebar from '../sidebar/sidebar';
+import { Component } from 'react';
 
 
-const Header: React.FC = () => {
+export default class Header extends Component {
+  render() {
   return (
-    <header>
-    <div>         
+    <header style={{}}>
+    <div>        
           <img className="img" src='/img/jjm-log_logo_mini.png' width={160}></img>
       
       <div className="navbar">
@@ -35,13 +37,9 @@ const Header: React.FC = () => {
           </span>
       </div>
     </div>
-      </div>
-
-      
-      
-      
+      </div>         
     </header>
-  );
+   );
+  }
 };
 
-export default Header;

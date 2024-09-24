@@ -1,9 +1,10 @@
-import React from 'react';
-import './Profile.css';
+import { Component } from 'react';
+import './Perfil.css';
 import userphoto from './img/user.png';
 
 
-const Profile = () => {
+export default class Profile extends Component{
+  render() {
   return (
     <div className="profile">
       <img src={userphoto} alt='perfil' className='profile-pic'/>
@@ -16,7 +17,7 @@ const Profile = () => {
         <p><strong>RG:</strong> 12.345.678-9</p>
       </div>
     </div>
-  );
+   );
+  }
 };
 
-export default Profile;
