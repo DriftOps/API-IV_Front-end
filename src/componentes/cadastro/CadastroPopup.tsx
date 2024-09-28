@@ -3,9 +3,10 @@ import './CadastroPopup.css';
 
 interface CadastroPopupProps {
   onClose: () => void;
+  addProcesso: (processo: { id: string; events: { status: string; location: string; date: string; details: string; responsavel: string; outrasInformacoes: string; }[] }) => void;
 }
 
-const CadastroPopup: React.FC<CadastroPopupProps> = ({ onClose }) => {
+const CadastroPopup: React.FC<CadastroPopupProps> = ({ onClose, addProcesso }) => {
   const [processType, setProcessType] = useState('Operacional');
   const [processInfo, setProcessInfo] = useState({
     status: '',
@@ -22,8 +23,20 @@ const CadastroPopup: React.FC<CadastroPopupProps> = ({ onClose }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aqui você pode enviar os dados para o backend (MySQL) no futuro
-    console.log('Cadastro realizado:', processInfo);
+    const newProcesso = {
+      id: Date.now().toString(), // Usando timestamp como ID único
+      events: [
+        {
+          status: processInfo.status,
+          location: processInfo.location,
+          date: new Date().toISOString(), // Data atual
+          details: processInfo.details,
+          responsavel: processInfo.responsavel,
+          outrasInformacoes: processInfo.outrasInformacoes,
+        },
+      ],
+    };
+    addProcesso(newProcesso);
     onClose();
   };
 
@@ -37,6 +50,7 @@ const CadastroPopup: React.FC<CadastroPopupProps> = ({ onClose }) => {
             id="processType"
             value={processType}
             onChange={(e) => setProcessType(e.target.value)}
+            required
           >
             <option value="Operacional">Operacional</option>
             <option value="Comercial">Comercial</option>
@@ -90,8 +104,10 @@ const CadastroPopup: React.FC<CadastroPopupProps> = ({ onClose }) => {
             onChange={handleInputChange}
           />
 
-          <button type="submit" className="submit-button">Cadastrar</button>
-          <button type="button" onClick={onClose} className="cancel-button">Cancelar</button>
+          <div className="button-group">
+            <button type="submit" className="submit-button">Cadastrar</button>
+            <button type="button" onClick={onClose} className="cancel-button">Cancelar</button>
+          </div>
         </form>
       </div>
     </div>

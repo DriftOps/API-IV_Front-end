@@ -1,0 +1,174 @@
+body {
+  z-index: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f2f5; 
+}
+
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.search-input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .search-input {
+    margin-bottom: 10px;
+  }
+}
+
+.processo-card {
+  border: none;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: box-shadow 0.3s ease;
+}
+
+.processo-card:hover {
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .processo-card {
+    padding: 10px;
+  }
+}
+
+.processo-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 10px;
+  color: #007bff;
+}
+
+.event-item {
+  border-left: 2px solid #ddd;
+  padding-left: 20px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.event-item:last-child {
+  margin-bottom: 0;
+}
+
+.event-item::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid gray;
+  position: absolute;
+  left: -18px;
+  top: 6px;
+}
+
+.event-status {
+  margin: 0 0 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+.event-status.completed::before {
+  border-color: green;
+}
+
+.event-status.completed {
+  color: green;
+}
+
+.event-info {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.event-details-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.event-details-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.event-details {
+  margin-top: 10px;
+  border-top: 1px dashed #ccc;
+  padding-top: 10px;
+  color: #666;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cadastro-button {
+  padding: 12px 24px;
+  background-color: #3b659f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cadastro-button:hover {
+  background-color: #214088;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .cadastro-button {
+    width: 100%;
+  }
+}

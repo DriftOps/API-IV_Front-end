@@ -1,0 +1,64 @@
+.profile {
+  background-color: #ffffff; /* Fundo branco */
+  padding: 20px; /* Reduzindo o espaçamento interno */
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px; /* Arredondando bordas */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+  margin: 15px; /* Reduzindo o espaçamento externo */
+  transition: transform 0.2s; /* Transição suave para o efeito de hover */
+}
+
+.profile:hover {
+  transform: scale(1.02); /* Efeito de zoom ao passar o mouse */
+}
+
+.profile-pic {
+  width: 80px; /* Reduzindo a largura da imagem */
+  height: 80px; /* Reduzindo a altura da imagem */
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 15px; /* Reduzindo o espaçamento acima da imagem */
+  border: 3px solid #007bff; /* Borda azul */
+}
+
+.profile-name {
+  margin-top: 10px; /* Reduzindo o espaçamento acima do nome */
+  font-size: 1.4em; /* Ajustando o tamanho da fonte */
+  color: #333;
+  text-align: center;
+}
+
+.profile-id {
+  margin-top: 5px; /* Espaçamento reduzido */
+  font-size: 0.9em; /* Ajustando o tamanho da fonte */
+  color: #666;
+  text-align: center;
+}
+
+.profile-info {
+  margin-top: 15px; /* Reduzindo o espaçamento acima das informações do perfil */
+  text-align: center;
+  width: 100%;
+  padding: 10px; /* Reduzindo o espaçamento interno */
+  border-top: 1px solid #e0e0e0; /* Linha acima das informações */
+  background: linear-gradient(to bottom, #f7f7f7, #ffffff); /* Gradiente suave */
+  border-radius: 0 0 10px 10px; /* Arredondando a parte inferior */
+}
+
+.profile-info p {
+  margin: 5px 0; /* Reduzindo o espaçamento entre as linhas */
+  font-size: 0.9em; /* Ajustando o tamanho da fonte das informações */
+  color: #444;
+  transition: color 0.2s; /* Transição suave para a cor */
+}
+
+.profile-info p:hover {
+  color: #007bff; /* Mudança de cor ao passar o mouse */
+}
+
+.profile-info strong {
+  color: #007bff; /* Destacando os rótulos em azul */
+}

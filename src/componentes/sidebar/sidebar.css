@@ -45,7 +45,6 @@ nav {
   background: none;
   border: none;
   font-size: 24px;
-  margin-left: 10px;
   cursor: pointer;
   color: black;
   margin-right: 20px;
@@ -116,6 +115,23 @@ nav.open .sidebar {
   background: #ffffff; 
   box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1), 
               -4px -4px 6px rgba(255, 255, 255, 0.7); 
+}
+
+.menu-button:hover {
+  background: none; /* Garante que não haja mudança de fundo */
+  color: black; /* Mantém a cor do texto */
+  box-shadow: none; /* Remove qualquer sombra que possa estar sendo aplicada */
+}
+
+.menu-button {
+  padding: 5px; 
+  width: 40px; 
+  height: 40px; 
+  margin-right: 10px;
+  margin-bottom: 5px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-link i {

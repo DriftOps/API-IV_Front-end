@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './Processos.css';
-import OrderDropdown from './OrderDropdown';
-import OrderTimeline from './OrderTimeline';
-import CadastroPopup from './CadastroPopup';
+import OrderDropdown from '../order/OrderDropdown';
+import OrderTimeline from '../order/OrderTimeline';
+import CadastroPopup from '../cadastro/CadastroPopup';
 
 interface Event {
   status: string;
@@ -19,12 +19,7 @@ interface Processo {
 }
 
 const Processos: React.FC = () => {
-  const [selectedProcesso, setSelectedProcesso] = useState<string | null>(null);
-  const [isCadastroOpen, setIsCadastroOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [openDetails, setOpenDetails] = useState<{ [key: string]: number | null }>({});
-
-  const processos: Processo[] = [
+  const [processos, setProcessos] = useState<Processo[]>([
     {
       id: '12345',
       events: [
@@ -46,49 +41,13 @@ const Processos: React.FC = () => {
         },
       ],
     },
-    {
-      id: '54321',
-      events: [
-        {
-          status: 'Recebido',
-          location: 'Lisboa, Portugal',
-          date: '15 Dez 2022 08:10:05',
-          details: 'Documentos processados na aduana de Lisboa e autorização de importação concedida.',
-          responsavel: 'Joana Pereira',
-          outrasInformacoes: 'Recebimento e processamento de documentos',
-        },
-        {
-          status: 'Processado',
-          location: 'Madrid, Espanha',
-          date: '15 Dez 2022 08:15:00',
-          details: 'Os itens foram processados no centro logístico de Madrid e estão prontos para transporte interno.',
-          responsavel: 'Pedro Alonso',
-          outrasInformacoes: 'Processamento dos itens no centro logístico',
-        },
-      ],
-    },
-    {
-      id: '09879',
-      events: [
-        {
-          status: 'Operacional',
-          location: 'Cibitung, Jakarta, Indonésia',
-          date: '16 Nov 2021 18:10:05',
-          details: 'O sistema operacional foi atualizado com sucesso e os testes de rede foram concluídos.',
-          responsavel: 'João Da Silva',
-          outrasInformacoes: 'Atualização do sistema',
-        },
-        {
-          status: 'Comercial',
-          location: 'Karawang, Indonésia',
-          date: '16 Nov 2021 16:23:05',
-          details: 'A equipe comercial aprovou os relatórios financeiros do último trimestre.',
-          responsavel: 'Livia Andrade',
-          outrasInformacoes: 'Aprovação dos relatórios financeiros',
-        },
-      ],
-    },
-  ];
+    // Adicione mais processos conforme necessário
+  ]);
+
+  const [selectedProcesso, setSelectedProcesso] = useState<string | null>(null);
+  const [isCadastroOpen, setIsCadastroOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [openDetails, setOpenDetails] = useState<{ [key: string]: number | null }>({});
 
   const handleSelectOrder = (orderId: string) => {
     setSelectedProcesso(orderId);
@@ -96,6 +55,10 @@ const Processos: React.FC = () => {
 
   const handleCadastroClick = () => {
     setIsCadastroOpen(true);
+  };
+
+  const addProcesso = (newProcesso: Processo) => {
+    setProcessos((prevProcessos) => [...prevProcessos, newProcesso]);
   };
 
   const filteredProcessos = processos.filter((processo) =>
@@ -135,7 +98,7 @@ const Processos: React.FC = () => {
         <p>Selecione um processo ou faça uma pesquisa.</p>
       )}
 
-      {isCadastroOpen && <CadastroPopup onClose={() => setIsCadastroOpen(false)} />}
+      {isCadastroOpen && <CadastroPopup onClose={() => setIsCadastroOpen(false)} addProcesso={addProcesso} />}
 
       {filteredProcessos.map((processo) => (
         <div key={processo.id} className="processo-card">

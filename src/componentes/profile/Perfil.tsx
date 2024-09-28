@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import './Perfil.css';
-import userphoto from './img/user.png';
+import userphoto from '../img/user.png';
 
 
 export default class Profile extends Component{
@@ -8,11 +8,11 @@ export default class Profile extends Component{
   return (
     <div className="profile">
       <img src={userphoto} alt='perfil' className='profile-pic'/>
-      <h2 className="profile-name">Bianca Capelo</h2>
+      <h2 className="profile-name">User</h2>
       <p className="profile-id">ID: 123456</p>
 
       <div className="profile-info">
-        <p><strong>Nome:</strong> Bianca Capelo</p>
+        <p><strong>Nome:</strong> User</p>
         <p><strong>CPF:</strong> 123.456.789-00</p>
         <p><strong>RG:</strong> 12.345.678-9</p>
       </div>
