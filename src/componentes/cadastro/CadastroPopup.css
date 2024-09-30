@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Certifique-se de que o pop-up esteja acima de outros elementos */
+  z-index: 1000;
 }
 
 .popup-content {
@@ -16,7 +16,15 @@
   padding: 20px;
   border-radius: 10px;
   width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
 }
 
 h2 {

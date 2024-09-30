@@ -42,7 +42,7 @@ export default class Sidebar extends Component<{}, State> {
                 <div className="sidebar-content">
                   <ul className="lists">
                     <li className="list">
-                      <a href="#" className="nav-link">
+                      <a href="/processos" className="nav-link">
                         <i className="bx bxs-dashboard"></i>
                         <span className="link">Principal</span>
                       </a>

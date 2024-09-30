@@ -20,7 +20,7 @@ i {
 
 nav {
   position: absolute;
-  top: 28px;
+  top: 23px;
   left: 0;
   height: 70px;
   width: 100%;
@@ -68,6 +68,14 @@ nav {
   background-color: white;
   transition: transform 0.4s ease;
   z-index: 1000;
+  max-height: 100vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
 }
 
 .sidebar.open {
