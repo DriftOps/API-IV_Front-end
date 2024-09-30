@@ -28,7 +28,7 @@ const Processos: React.FC = () => {
           status: 'Preparação',
           sector: 'Operacional',
           location: 'São Paulo, Brasil',
-          date: '10 de ago. de 2022 14:10:05',
+          date: '10 Ago 2022 14:10:05',
           details: 'Documentos fiscais gerados e a verificação inicial de inventário foi concluída.',
           responsavel: 'Carlos Mendes',
           outrasInformacoes: 'Preparação e verificação de documentos fiscais',
@@ -44,7 +44,52 @@ const Processos: React.FC = () => {
         },
       ],
     },
-    // Adicione mais processos conforme necessário
+    {
+      id: '54321',
+      events: [
+        {
+          status: 'Recebido',
+          sector: 'Logística', // Adicione o setor conforme necessário
+          location: 'Lisboa, Portugal',
+          date: '15 Dez 2022 08:10:05',
+          details: 'Documentos processados na aduana de Lisboa e autorização de importação concedida.',
+          responsavel: 'Joana Pereira',
+          outrasInformacoes: 'Recebimento e processamento de documentos',
+        },
+        {
+          status: 'Processado',
+          sector: 'Logística', // Adicione o setor conforme necessário
+          location: 'Madrid, Espanha',
+          date: '15 Dez 2022 08:15:00',
+          details: 'Os itens foram processados no centro logístico de Madrid e estão prontos para transporte interno.',
+          responsavel: 'Pedro Alonso',
+          outrasInformacoes: 'Processamento dos itens no centro logístico',
+        },
+      ],
+    },
+    {
+      id: '09879',
+      events: [
+        {
+          status: 'Operacional',
+          sector: 'Tecnologia', // Adicione o setor conforme necessário
+          location: 'Cibitung, Jakarta, Indonésia',
+          date: '16 Nov 2021 18:10:05',
+          details: 'O sistema operacional foi atualizado com sucesso e os testes de rede foram concluídos.',
+          responsavel: 'João Da Silva',
+          outrasInformacoes: 'Atualização do sistema',
+        },
+        {
+          status: 'Comercial',
+          sector: 'Financeiro', // Adicione o setor conforme necessário
+          location: 'Karawang, Indonésia',
+          date: '16 Nov 2021 16:23:05',
+          details: 'A equipe comercial aprovou os relatórios financeiros do último trimestre.',
+          responsavel: 'Livia Andrade',
+          outrasInformacoes: 'Aprovação dos relatórios financeiros',
+        },
+      ],
+    },
   ]);
 
   const [selectedProcesso, setSelectedProcesso] = useState<string | null>(null);
@@ -122,7 +167,7 @@ const Processos: React.FC = () => {
               </button>
               {openDetails[processo.id] === index && (
                 <div className="event-details">
-                  <p><strong>Setor:</strong>  {event.sector}</p>
+                  <p><strong>Setor:</strong> {event.sector}</p>
                   <p><strong>Detalhes:</strong> {event.details}</p>
                   <p><strong>Responsável:</strong> {event.responsavel}</p>
                   <p><strong>Outras informações:</strong> {event.outrasInformacoes}</p>

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './navbar.css';
+import './NavBar.css';
 import Sidebar from '../sidebar/sidebar';
 import { Component } from 'react';
 

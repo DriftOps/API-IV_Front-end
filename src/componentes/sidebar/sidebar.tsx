@@ -102,12 +102,6 @@ export default class Sidebar extends Component<{}, State> {
                           <span className="link">Relatório</span>
                         </a>
                       </li>
-                      <li className="list">
-                        <a href="/  " className="nav-link">
-                          <i className="bx bx-exit"></i>
-                          <span className="link">Sair</span>
-                        </a>
-                      </li>
                     </ul>
                   </div>
                 </div>

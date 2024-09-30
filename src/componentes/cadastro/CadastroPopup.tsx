@@ -23,16 +23,6 @@ const CadastroPopup: React.FC<CadastroPopupProps> = ({ onClose, addProcesso }) =
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    const formattedDate = new Date().toLocaleString('pt-BR', {
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-    });
-
     const newProcesso = {
       id: Date.now().toString(),
       events: [
@@ -40,7 +30,7 @@ const CadastroPopup: React.FC<CadastroPopupProps> = ({ onClose, addProcesso }) =
           status: processStatus,
           sector: processType,
           location: processInfo.location,
-          date: formattedDate,
+          date: new Date().toISOString(),
           details: processInfo.details,
           responsavel: processInfo.responsavel,
           outrasInformacoes: processInfo.outrasInformacoes,
@@ -54,13 +44,14 @@ const CadastroPopup: React.FC<CadastroPopupProps> = ({ onClose, addProcesso }) =
   return (
     <div className="popup-overlay">
       <div className="popup-content">
+        <button className="close-button" onClick={onClose}>X</button>
         <h2>Cadastrar Novo Processo</h2>
         <form onSubmit={handleSubmit}>
           <label htmlFor="processType">Tipo de Processo</label>
           <select
             id="processType"
             value={processType}
-            onChange={(e) => setProcessType(e.target.value)} 
+            onChange={(e) => setProcessType(e.target.value)}
             required
           >
             <option value="Operacional">Operacional</option>
