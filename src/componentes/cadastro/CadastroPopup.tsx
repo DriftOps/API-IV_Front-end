@@ -58,14 +58,16 @@ const CadastroPopup: React.FC<CadastroPopupProps> = ({ onClose, addProcesso }) =
           </select>
 
           <label htmlFor="status">Status</label>
-          <input
-            type="text"
-            id="status"
-            name="status"
-            value={processInfo.status}
-            onChange={handleInputChange}
+          <select
+            id="processStatus"
+            value={processType}
+            onChange={(e) => setProcessType(e.target.value)}
             required
-          />
+          >
+            <option value="Em preparação">Em preparação</option>
+            <option value="Enviado">Enviado</option>
+            <option value="Finalizado">Finalizado</option>
+          </select>
 
           <label htmlFor="location">Localização</label>
           <input

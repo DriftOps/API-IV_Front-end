@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 .navbar {
@@ -17,14 +18,17 @@ body{
   
   .nav-item {
     color: white;
+    font-size: 18px;
+    font-weight: 550;
     font-size: 16px;
     cursor: pointer;
     margin-top: 2%;
     text-decoration: none;
     z-index: 0;
+    text-align: center;
+    transition: color 0.3s;
   }
-  
-  
+
   .img{
     margin: auto;
     display: block;
