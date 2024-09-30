@@ -6,6 +6,7 @@ import CadastroPopup from '../cadastro/CadastroPopup';
 
 interface Event {
   status: string;
+  sector: string;
   location: string;
   date: string;
   details: string;
@@ -25,6 +26,7 @@ const Processos: React.FC = () => {
       events: [
         {
           status: 'Preparação',
+          sector: 'Operacional',
           location: 'São Paulo, Brasil',
           date: '10 Ago 2022 14:10:05',
           details: 'Documentos fiscais gerados e a verificação inicial de inventário foi concluída.',
@@ -33,6 +35,7 @@ const Processos: React.FC = () => {
         },
         {
           status: 'Envio',
+          sector: 'Operacional',
           location: 'Brasília, Brasil',
           date: '10 Ago 2022 14:15:00',
           details: 'O pacote foi enviado por transportadora local, previsão de entrega em 5 dias úteis.',
@@ -119,6 +122,7 @@ const Processos: React.FC = () => {
               </button>
               {openDetails[processo.id] === index && (
                 <div className="event-details">
+                  <p><strong>Setor:</strong>{event.sector}</p>
                   <p><strong>Detalhes:</strong> {event.details}</p>
                   <p><strong>Responsável:</strong> {event.responsavel}</p>
                   <p><strong>Outras informações:</strong> {event.outrasInformacoes}</p>
