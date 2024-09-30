@@ -122,7 +122,7 @@ const Processos: React.FC = () => {
               </button>
               {openDetails[processo.id] === index && (
                 <div className="event-details">
-                  <p><strong>Setor:</strong>{event.sector}</p>
+                  <p><strong>Setor:</strong>  {event.sector}</p>
                   <p><strong>Detalhes:</strong> {event.details}</p>
                   <p><strong>Responsável:</strong> {event.responsavel}</p>
                   <p><strong>Outras informações:</strong> {event.outrasInformacoes}</p>
