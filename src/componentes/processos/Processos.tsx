@@ -28,7 +28,7 @@ const Processos: React.FC = () => {
           status: 'Preparação',
           sector: 'Operacional',
           location: 'São Paulo, Brasil',
-          date: '10 Ago 2022 14:10:05',
+          date: '10 de ago. de 2022 14:10:05',
           details: 'Documentos fiscais gerados e a verificação inicial de inventário foi concluída.',
           responsavel: 'Carlos Mendes',
           outrasInformacoes: 'Preparação e verificação de documentos fiscais',

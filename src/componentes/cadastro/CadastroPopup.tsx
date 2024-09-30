@@ -7,8 +7,8 @@ interface CadastroPopupProps {
 }
 
 const CadastroPopup: React.FC<CadastroPopupProps> = ({ onClose, addProcesso }) => {
-  const [processType, setProcessType] = useState('Operacional'); // Setor selecionado
-  const [processStatus, setProcessStatus] = useState('Em preparação'); // Status selecionado
+  const [processType, setProcessType] = useState('Operacional');
+  const [processStatus, setProcessStatus] = useState('Em preparação');
   const [processInfo, setProcessInfo] = useState({
     location: '',
     details: '',
@@ -23,14 +23,24 @@ const CadastroPopup: React.FC<CadastroPopupProps> = ({ onClose, addProcesso }) =
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const formattedDate = new Date().toLocaleString('pt-BR', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    });
+
     const newProcesso = {
-      id: Date.now().toString(), // Usando timestamp como ID único
+      id: Date.now().toString(),
       events: [
         {
-          status: processStatus,  // O status selecionado
-          sector: processType,     // O setor selecionado
+          status: processStatus,
+          sector: processType,
           location: processInfo.location,
-          date: new Date().toISOString(), // Data atual
+          date: formattedDate,
           details: processInfo.details,
           responsavel: processInfo.responsavel,
           outrasInformacoes: processInfo.outrasInformacoes,
@@ -50,7 +60,7 @@ const CadastroPopup: React.FC<CadastroPopupProps> = ({ onClose, addProcesso }) =
           <select
             id="processType"
             value={processType}
-            onChange={(e) => setProcessType(e.target.value)} // Atualiza o setor selecionado
+            onChange={(e) => setProcessType(e.target.value)} 
             required
           >
             <option value="Operacional">Operacional</option>
@@ -62,7 +72,7 @@ const CadastroPopup: React.FC<CadastroPopupProps> = ({ onClose, addProcesso }) =
           <select
             id="processStatus"
             value={processStatus}
-            onChange={(e) => setProcessStatus(e.target.value)} // Atualiza o status selecionado
+            onChange={(e) => setProcessStatus(e.target.value)}
             required
           >
             <option value="Em preparação">Em preparação</option>
