@@ -49,12 +49,6 @@ export default class Sidebar extends Component<{}, State> {
                     </li>
                     <li className="list">
                       <a href="#" className="nav-link">
-                        <i className="bx bx-transfer-alt"></i>
-                        <span className="link">Transferências</span>
-                      </a>
-                    </li>
-                    <li className="list">
-                      <a href="#" className="nav-link">
                         <i className="bx bx-car"></i>
                         <span className="link">Veículos</span>
                       </a>
