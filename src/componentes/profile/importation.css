@@ -1,0 +1,44 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+
+    /* Altere as dimensões aqui */
+    width: 400px; /* Largura do modal */
+    height: 500px; /* Altura do modal */
+  }
+  
+  .modal-btn{
+    display: block; /* Para que o botão ocupe toda a linha */
+    margin: 20px auto; /* Margem automática para centralizar horizontalmente */
+    margin-top: 350px;
+  }
+
+  .explorer-button {
+    margin-top: 10px; /* Espaço acima do botão */
+    padding: 10px 15px; /* Padding para aumentar a área clicável */
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: white; /* Cor do texto */
+    border: none; /* Remover borda padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor em forma de mão ao passar sobre o botão */
+    transition: background-color 0.3s; /* Efeito de transição */
+  }
+  
+  .explorer-button:hover {
+    background-color: #0056b3; /* Cor ao passar o mouse */
+  }
