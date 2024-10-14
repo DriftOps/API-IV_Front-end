@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Perfil.css';
 import userphoto from '../img/user.png';
+import './importation.css'
 
 interface ProfileState {
   isEditing: boolean;
@@ -8,6 +9,7 @@ interface ProfileState {
   cpf: string;
   rg: string;
   setor: string;
+  isModalOpen: boolean;
 }
 
 export default class Profile extends Component<{}, ProfileState> {
@@ -19,11 +21,20 @@ export default class Profile extends Component<{}, ProfileState> {
       cpf: '123.456.789-00',
       rg: '12.345.678-9',
       setor: 'Operacional',
+      isModalOpen: false,
     };
   }
 
   toggleEdit = () => {
     this.setState({ isEditing: !this.state.isEditing });
+  };
+
+  openModal = () => {
+    this.setState({ isModalOpen: true });
+  };
+
+  closeModal = () => {
+    this.setState({ isModalOpen: false });
   };
 
   handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -34,8 +45,17 @@ export default class Profile extends Component<{}, ProfileState> {
     }));
   };
 
+  handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files; // Obtém os arquivos selecionados
+    if (files && files.length > 0) {
+      console.log('Arquivo selecionado:', files[0]); // Faz algo com o arquivo selecionado
+    }
+  };
+
+
+
   render() {
-    const { isEditing, name, cpf, rg, setor } = this.state;
+    const { isEditing, name, cpf, rg, setor, isModalOpen } = this.state;
 
     return (
       <div className="profile">
@@ -110,6 +130,33 @@ export default class Profile extends Component<{}, ProfileState> {
         <button onClick={this.toggleEdit}>
           {isEditing ? 'Salvar' : 'Editar'}
         </button>
+
+        
+
+        {/* Botão para abrir o modal */}
+        <button onClick={this.openModal}>Enviar Documento</button>
+
+        {/* Modal */}
+        {isModalOpen && (
+          <div className="modal-overlay">
+            <div className="modal">
+              <h2>Enviar Documento</h2>
+              <p>Selecione o arquivo desejado</p>
+              <button className='modal-btn' onClick={this.closeModal}>Fechar Modal</button>
+
+              <input
+                type="file"
+                id="file-input"
+                style={{ display: 'none' }}
+                onChange={this.handleFileSelect}
+              />
+              <button className='explorer-button' onClick={() => document.getElementById('file-input').click()}>
+                Selecionar arquivo
+              </button>
+
+            </div>
+          </div>
+        )}
       </div>
     );
   }
