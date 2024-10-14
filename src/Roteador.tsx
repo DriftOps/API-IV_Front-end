@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './componentes/login/Login';
+import Principal from './componentes/principal/principal';
 import Processos from './componentes/processos/Processos';
 import NavTab from './componentes/nav-tab/nav-tab'
 import NavTabPerfil from './componentes/nav-tab/nav-tab-perfil';
@@ -18,6 +19,7 @@ const Roteador: React.FC = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/principal" element={<Principal />} />
         <Route path="/processos" element={<Processos />} />
         <Route path="/perfil" element={<Profile />} />
         <Route path="/informativos" element={<Informativos />} />

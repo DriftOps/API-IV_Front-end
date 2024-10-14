@@ -1,51 +1,91 @@
-body{
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 .navbar {
-    display: flex;
-    align-items: center;
-    background-color: #0a4c71;
+  display: flex;
+  align-items: center;
+  background-color: #0a4c71;
+  padding: 10px;
+  flex-wrap: wrap; /* Permite que os itens se movam para a linha seguinte se necessário */
+}
+
+.nav-items {
+  display: flex;
+  gap: 20px;
+  margin-left: 25px;
+  flex: 1; /* Permite que a seção de navegação ocupe o espaço disponível */
+}
+
+.nav-item {
+  color: white;
+  font-size: 18px;
+  font-weight: 550;
+  cursor: pointer;
+  margin-top: 2%;
+  text-decoration: none;
+  z-index: 0;
+  text-align: center;
+  transition: color 0.3s;
+}
+
+.img {
+  margin: auto;
+  display: block;
+}
+
+.nav-item:hover {
+  color: #ccc;
+}
+
+ul {
+  text-decoration: none;
+  list-style-type: none;
+  margin: 0;
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start; /* Alinha os itens ao início (esquerda) */
+    padding: 15px;
+    margin-right: 100px;
+    border-radius: 0 10px 10px 0;
+  }
+
+  .nav-items {
+    margin-left: 10; /* Remove a margem esquerda para a seção de navegação */
+    flex-direction: column; /* Empilha os itens de navegação verticalmente */
+    gap: 10px;
+    width: 100%; /* Faz com que os itens ocupem toda a largura */
+  }
+
+  .nav-item {
+    font-size: 16px; /* Ajusta o tamanho da fonte */
+    width: calc(100% - 20px); /* Faz cada item ocupar toda a largura menos a margem */
+    margin: 0 5px; /* Adiciona margem à esquerda e à direita */
+    text-align: left; /* Alinha o texto à esquerda */
+    padding: 10px;
+    border-bottom: 2px solid white; /* Adiciona uma linha branca embaixo de cada item */
+  }
+
+  .nav-item:last-child {
+    border-bottom: none; /* Remove a linha do último item */
+  }
+
+  .img {
+    width: 80%; /* Ajusta a imagem para se adaptar melhor em telas pequenas */
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-item {
+    font-size: 14px;
+  }
+
+  .navbar {
     padding: 10px;
   }
-  
-  .nav-items {
-    display: flex;
-    gap: 20px;
-    margin-left: 25px;
-  }
-  
-  .nav-item {
-    color: white;
-    font-size: 18px;
-    font-weight: 550;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 2%;
-    text-decoration: none;
-    z-index: 0;
-    text-align: center;
-    transition: color 0.3s;
-  }
-
-  .img{
-    margin: auto;
-    display: block;
-  }
-
-  
-  .nav-item:hover {
-    color: #ccc; 
-  }
-
-  ul{
-    text-decoration: none;
-    list-style-type: none;
-    margin: 0;
-  }
-
-
-  
-
-  
+}

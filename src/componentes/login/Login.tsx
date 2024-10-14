@@ -15,7 +15,7 @@ const Login: React.FC = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (email === 'admin@example.com' && password === '1234') {
-      navigate('/processos');
+      navigate('/principal');
     } else {
       alert('Email ou senha incorretos.');
     }

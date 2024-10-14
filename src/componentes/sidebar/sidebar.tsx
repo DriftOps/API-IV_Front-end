@@ -24,7 +24,6 @@ export default class Sidebar extends Component<{}, State> {
   render() {
     const { isOpen } = this.state;
 
-
     return (
       <>
         <link
@@ -40,9 +39,14 @@ export default class Sidebar extends Component<{}, State> {
             <>
               <div className="sidebar">
                 <div className="sidebar-content">
+                  {/* Botão de fechar (X) */}
+                  <button className="close-button" onClick={this.closeMenu}>
+                    <i className="bx bx-x"></i>
+                  </button>
+
                   <ul className="lists">
                     <li className="list">
-                      <a href="/processos" className="nav-link">
+                      <a href="/principal" className="nav-link">
                         <i className="bx bxs-dashboard"></i>
                         <span className="link">Principal</span>
                       </a>
