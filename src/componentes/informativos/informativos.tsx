@@ -6,22 +6,22 @@ const Informativo: React.FC = () => {
   const setores = [
     {
       nome: 'Operacional',
-      path: '/setor/operacional',
+      path: '/informativos/setor/operacional',
       descricao: 'Responsável por gerenciar a produção e operações diárias.',
     },
     {
       nome: 'Recursos Humanos',
-      path: '/setor/recursos-humanos',
+      path: '/informativos/setor/recursos-humanos',
       descricao: 'Gerencia recrutamento, treinamento e bem-estar dos funcionários.',
     },
     {
       nome: 'Financeiro',
-      path: '/setor/financeiro',
+      path: '/informativos/setor/financeiro',
       descricao: 'Controla o fluxo de caixa, orçamento e estratégias financeiras.',
     },
     {
       nome: 'Almoxarifado',
-      path: '/setor/almoxarifado',
+      path: '/informativos/setor/almoxarifado',
       descricao: 'Gerencia o estoque e a distribuição de materiais e suprimentos.',
     },
   ];

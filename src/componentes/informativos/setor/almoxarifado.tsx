@@ -1,6 +1,7 @@
 import React from 'react';
 import './almoxarifado.css';
 
+
 const Almoxarifado: React.FC = () => {
   return (
     <div className="warehouse-container">
