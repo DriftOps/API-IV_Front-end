@@ -4,10 +4,10 @@ import './informativos.css';
 
 const Informativo: React.FC = () => {
   const setores = [
-    { nome: 'Operacional', path: '/setor/operacional' },
-    { nome: 'Recursos Humanos', path: '/setor/recursos-humanos' },
-    { nome: 'Financeiro', path: '/setor/financeiro' },
-    { nome: 'Almoxarifado', path: '/setor/almoxarifado' },
+    { nome: 'Operacional', path: './setor/operacional' },
+    { nome: 'Recursos Humanos', path: './setor/recursos-humanos' },
+    { nome: 'Financeiro', path: './setor/financeiro' },
+    { nome: 'Almoxarifado', path: './setor/almoxarifado' },
   ];
 
   return (
