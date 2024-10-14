@@ -1,28 +1,47 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
 .informativo-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap; /* Permite que os cards fiquem em várias linhas se necessário */
   margin-top: 20px;
-  height: 30vh;
+  padding: 20px;
 }
 
-.setor-botao {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 1.1em;
-  transition: background-color 0.3s;
+.setor-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  width: 250px;
+  height: 180px;
   text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.setor-botao:hover {
-  background-color: #0056b3;
+.setor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.setor-botao:active {
-  background-color: #004494;
+.card-content h3 {
+  font-size: 1.5em;
+  color: #0a4c71;
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  font-size: 0.9em;
+  color: #555;
 }
