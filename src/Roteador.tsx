@@ -7,23 +7,24 @@ import NavTabPerfil from './componentes/nav-tab/nav-tab-perfil';
 import Profile from './componentes/profile/Perfil';
 import Informativos from './componentes/informativos/informativos';
 import Almoxarifado from './componentes/informativos/setor/almoxarifado';
-import Financeiro from './componentes/informativos/setor/almoxarifado';
-import Operacional from './componentes/informativos/setor/almoxarifado';
-import Recursos_Humanos from './componentes/informativos/setor/almoxarifado';
+import Financeiro from './componentes/informativos/setor/financeiro';
+import Operacional from './componentes/informativos/setor/operacional';
+import RecursosHumanos from './componentes/informativos/setor/recursos-humanos';
 
 const Roteador: React.FC = () => {
   return (
-    <Router>   
+    <Router>
+      <NavTab /> {/* Navbar global visível em todas as rotas */}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/processos" element={<><NavTab/> <Processos /> </>} />
-        <Route path="/perfil" element={<><NavTabPerfil /> <Profile /> </>} />
-        <Route path="/informativos" element={<><NavTab/> <Informativos /> </>} />
+        <Route path="/processos" element={<Processos />} />
+        <Route path="/perfil" element={<><NavTabPerfil /> <Profile /></>} />
+        <Route path="/informativos" element={<Informativos />} />
         <Route path="/informativos/setor/almoxarifado" element={<Almoxarifado />} />
         <Route path="/informativos/setor/financeiro" element={<Financeiro />} />
         <Route path="/informativos/setor/operacional" element={<Operacional />} />
-        <Route path="/informativos/setor/recursos-humanos" element={<Recursos_Humanos />} />
+        <Route path="/informativos/setor/recursos-humanos" element={<RecursosHumanos />} />
       </Routes>
     </Router>
   );
