@@ -17,6 +17,11 @@ const AdicionarVeiculo = () => {
     navigate('/veiculos');
   };
 
+  const handleVoltar = () => {
+    // Redireciona de volta para a lista de veículos
+    navigate('/veiculos');
+  };
+
   return (
     <div className="form-adicionar-container">
       <h2>Adicionar Veículo</h2>
@@ -37,7 +42,12 @@ const AdicionarVeiculo = () => {
           <label>Placa:</label>
           <input type="text" value={placa} onChange={(e) => setPlaca(e.target.value)} />
         </div>
+        
         <button type="button" onClick={handleSalvar}>Salvar</button>
+
+        <button type="button" onClick={handleVoltar} className="btn-voltar">
+          <img src="/img/voltar.png" alt="Voltar" />
+        </button>
       </form>
     </div>
   );

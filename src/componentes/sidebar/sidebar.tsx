@@ -59,12 +59,12 @@ export default class Sidebar extends Component<{}, State> {
                     </li>
                     <li className="list">
                       <a href="#" className="nav-link">
-                        <i className="bx bx-user"></i>
+                        <i className="bx bx-box"></i>
                         <span className="link">Administradores</span>
                       </a>
                     </li>
                     <li className="list">
-                      <a href="#" className="nav-link">
+                      <a href="Estatistica" className="nav-link">
                         <i className="bx bx-stats"></i>
                         <span className="link">Estatísticas</span>
                       </a>
@@ -76,9 +76,15 @@ export default class Sidebar extends Component<{}, State> {
                       </a>
                     </li>
                     <li className="list">
-                      <a href="#" className="nav-link">
+                      <a href="/AdicionarUsuario" className="nav-link">
+                        <i className="bx bx-user"></i>
+                        <span className="link">Adicionar usuário</span>
+                      </a>
+                    </li>
+                  <li className="list">
+                      <a href="/Configuracao" className="nav-link">
                         <i className="bx bx-cog"></i>
-                        <span className="link">Adicionar administrador</span>
+                        <span className="link">Configurações</span>
                       </a>
                     </li>
                   </ul>

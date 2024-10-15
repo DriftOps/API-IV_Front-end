@@ -1,0 +1,81 @@
+.adicionar-usuario-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    text-align: center;
+    color: #0a4c71;
+    margin-bottom: 20px;
+  }
+  
+  .adicionar-usuario-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .form-group input, 
+  .form-group select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Botões */
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .add-user-button,
+  .enviar-email {
+    width: 48%;
+    padding: 10px;
+    background-color: #0a4c71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .add-user-button:hover,
+  .enviar-email:hover {
+    background-color: #0056b3;
+  }
+  
+  @media (max-width: 768px) {
+    .adicionar-usuario-container {
+      padding: 15px;
+    }
+  
+    .form-group input, 
+    .form-group select {
+      font-size: 14px;
+    }
+  
+    .button-group {
+      flex-direction: column;
+    }
+  
+    .add-user-button,
+    .enviar-email {
+      width: 100%;
+    }
+  }  
