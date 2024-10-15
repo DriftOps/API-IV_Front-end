@@ -59,6 +59,8 @@ function principal() {
                 <br /><br />
                 <a href="/public/JJMLOG.pdf" download className="download-button">DOWNLOAD</a>
             </section>
+
+
         </div>
     );
 }

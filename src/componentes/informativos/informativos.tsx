@@ -41,6 +41,7 @@ const Informativo: React.FC = () => {
           </div>
         </Link>
       ))}
+
     </div>
   );
 };

@@ -1,0 +1,64 @@
+/* ListaVeiculos.css */
+
+.lista-veiculos-container {
+    padding: 20px;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+  }
+  
+  .header-lista {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .btn-novo {
+    background-color: #0a4c71;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  .btn-novo:hover {
+    background-color: #08405b;
+  }
+  
+  .veiculos-table {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #fff;
+  }
+  
+  .veiculos-table th, .veiculos-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .veiculos-table th {
+    background-color: #0a4c71;
+    color: #fff;
+  }
+  
+  .veiculos-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .veiculos-table button {
+    background-color: #0a4c71;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .veiculos-table button:hover {
+    background-color: #08405b;
+  }
+  
