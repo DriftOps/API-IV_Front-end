@@ -21,10 +21,10 @@
           </span>
             </div>
             <span  className="nav-item">
-            <Link to="/tarefas" className='nav-item'>Tarefas</Link>
+            <Link to="/perfil" className='nav-item'>Perfil</Link>
             </span>
           <span className="nav-item ">
-          <Link to="/perfil" className='nav-item'>Perfil</Link>
+          <Link to="/tarefas" className='nav-item'>Tarefas</Link>
             </span>
             <span className="nav-item ">
           <Link to="/informativos" className='nav-item'>Informativos</Link>

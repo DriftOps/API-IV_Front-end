@@ -1,9 +1,9 @@
 import React from 'react';
-import './recursos-humanos.css';
+import './setores.css';
 
 const RecursosHumanos: React.FC = () => {
   return (
-    <div className="resources-container">
+    <div className="setores-container">
       <header className="header">
         <h1>Setor de Recursos Humanos - JJM LOG</h1>
       </header>
@@ -16,9 +16,7 @@ const RecursosHumanos: React.FC = () => {
           <li>Feedbacks: Lembrete para todos os líderes: a coleta de feedbacks deve ser feita até o final do mês.</li>
         </ul>
       </section>
-      <footer className="footer">
-        <p>&copy; 2024 JJM LOG. Todos os direitos reservados.</p>
-      </footer>
+      
     </div>
   );
 };

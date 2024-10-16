@@ -1,11 +1,11 @@
 import React from 'react';
-import './almoxarifado.css';
+import './setores.css';
 
 
 
 const Almoxarifado: React.FC = () => {
   return (
-    <div className="warehouse-container">
+    <div className="setores-container">
       <header className="header">
         <h1>Setor de Almoxarifado - JJM LOG</h1>
       </header>
@@ -18,9 +18,7 @@ const Almoxarifado: React.FC = () => {
           <li>Reabastecimento: Verifiquem os estoques e solicitem reabastecimento até o dia 20 de outubro.</li>
         </ul>
       </section>
-      <footer className="footer">
-        <p>&copy; 2024 JJM LOG. Todos os direitos reservados.</p>
-      </footer>
+      
     </div>
   );
 };

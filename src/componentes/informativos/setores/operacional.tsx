@@ -1,9 +1,9 @@
 import React from 'react';
-import './operacional.css';
+import './setores.css';
 
 const Operacional: React.FC = () => {
   return (
-    <div className="operational-container">
+    <div className="setores-container">
       <header className="header">
         <h1>Setor Operacional - JJM LOG</h1>
       </header>
@@ -16,9 +16,7 @@ const Operacional: React.FC = () => {
           <li>Segurança: Reforçamos a importância do uso de EPIs durante as operações.</li>
         </ul>
       </section>
-      <footer className="footer">
-        <p>&copy; 2024 JJM LOG. Todos os direitos reservados.</p>
-      </footer>
+     
     </div>
   );
 };

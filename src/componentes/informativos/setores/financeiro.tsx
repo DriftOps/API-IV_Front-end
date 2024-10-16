@@ -1,9 +1,9 @@
 import React from 'react';
-import './financeiro.css';
+import './setores.css';
 
 const Financeiro: React.FC = () => {
   return (
-    <div className="finance-container">
+    <div className="setores-container">
       <header className="header">
         <h1>Setor Financeiro - JJM LOG</h1>
       </header>
@@ -16,9 +16,7 @@ const Financeiro: React.FC = () => {
           <li>Orçamento: Lembrete para todos os departamentos: as propostas de orçamento devem ser entregues até o final do mês.</li>
         </ul>
       </section>
-      <footer className="footer">
-        <p>&copy; 2024 JJM LOG. Todos os direitos reservados.</p>
-      </footer>
+      
     </div>
   );
 };
