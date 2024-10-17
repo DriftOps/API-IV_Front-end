@@ -1,38 +1,15 @@
-.estatistica {
-    padding: 20px;
-    background-color: #f9f9f9; /* Fundo suave */
-    border-radius: 5px;
-    max-width: 600px; /* Largura máxima */
-    margin: auto; /* Centraliza a página */
+.graph-row {
+    display: flex;
+    justify-content: space-between; /* Espaço entre os gráficos */
+    margin-bottom: 40px; /* Aumenta o espaço abaixo da linha de gráficos */
 }
 
-h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
+.graph-container {
+    width: 45%; /* Ajuste a largura conforme necessário */
+    height: 400px; /* Mantenha a altura constante */
+    margin-bottom: 20px; /* Espaço abaixo de cada gráfico */
 }
 
-.estatistica-info {
-    margin-bottom: 20px;
-}
-
-.estatistica-dados {
-    margin-bottom: 20px;
-}
-
-.estatistica-dados h3 {
-    margin: 10px 0; /* Espaço entre os títulos de dados */
-}
-
-.estatistica-acoes button {
-    margin-right: 10px; /* Espaço entre os botões */
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
-    cursor: pointer;
-}
-
-.estatistica-acoes button:hover {
-    background-color: #0056b3; /* Cor ao passar o mouse */
+.graph-container h2 {
+    margin-bottom: 10px; /* Espaço entre o título e o gráfico */
 }
