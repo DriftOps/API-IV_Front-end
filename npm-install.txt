@@ -1,0 +1,9 @@
+npm install express mysql2 cors
+
+npm install react-input-mask
+
+npm install axios
+
+npm install express
+
+install --force

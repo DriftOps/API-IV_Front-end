@@ -10,7 +10,7 @@ const Footer = () => {
       const documentHeight = document.documentElement.scrollHeight;
 
       // Se o usuário rolou até o final da página
-      if (scrollY + windowHeight >= documentHeight - 50) { // Adicionando um pequeno buffer
+      if (scrollY + windowHeight >= documentHeight - 50) {
         footer.classList.add('show'); // Mostra o footer
       } else {
         footer.classList.remove('show'); // Esconde o footer
@@ -41,14 +41,14 @@ const Footer = () => {
         <p>
           <strong>Links</strong>
           <br />
-          <a href="#">LGPD</a>
+          <a href="https://www.jjmlog.com/index.php/pt/documentation/" target="_blank" rel="noopener noreferrer">LGPD</a>
           <br />
-          <a href="#">Instagram</a>
+          <a href="https://www.instagram.com/jjmlog/?r=nametag" target="_blank" rel="noopener noreferrer">Instagram</a>
           <br />
-          <a href="#">Facebook</a>
+          <a href="https://www.facebook.com/JJMLOG" target="_blank" rel="noopener noreferrer">Facebook</a>
         </p>
         <p>
-          <strong>Media Copyright</strong>
+          <strong>®2024 JJM LOG. Todos os direitos reservados.</strong>
         </p>
       </div>
     </footer>
