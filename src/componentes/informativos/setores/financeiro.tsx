@@ -1,7 +1,14 @@
 import React from 'react';
 import './setores.css';
+import { useNavigate } from 'react-router-dom';
 
 const Financeiro: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleVoltar = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="setores-container">
       <header className="header">
@@ -16,7 +23,7 @@ const Financeiro: React.FC = () => {
           <li>Orçamento: Lembrete para todos os departamentos: as propostas de orçamento devem ser entregues até o final do mês.</li>
         </ul>
       </section>
-      
+      <button onClick={handleVoltar}>Voltar</button>
     </div>
   );
 };

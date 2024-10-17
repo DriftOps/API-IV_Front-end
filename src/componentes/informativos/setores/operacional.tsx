@@ -1,7 +1,14 @@
 import React from 'react';
 import './setores.css';
+import { useNavigate } from 'react-router-dom';
 
 const Operacional: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleVoltar = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="setores-container">
       <header className="header">
@@ -16,7 +23,7 @@ const Operacional: React.FC = () => {
           <li>Segurança: Reforçamos a importância do uso de EPIs durante as operações.</li>
         </ul>
       </section>
-     
+      <button onClick={handleVoltar}>Voltar</button>
     </div>
   );
 };
