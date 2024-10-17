@@ -29,7 +29,9 @@
   }
 
   .explorer-button {
-    margin-top: 10px; /* Espaço acima do botão */
+    position: relative;
+    top: -400px;
+    margin-top: 0px; /* Espaço acima do botão */
     padding: 10px 15px; /* Padding para aumentar a área clicável */
     background-color: #007bff; /* Cor de fundo do botão */
     color: white; /* Cor do texto */

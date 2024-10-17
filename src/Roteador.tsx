@@ -20,6 +20,7 @@ import Financeiro from './componentes/informativos/setores/financeiro';
 import Operacional from './componentes/informativos/setores/operacional';
 import RecursosHumanos from './componentes/informativos/setores/recursos-humanos';
 import Processos from './componentes/processos/Processos';
+import Tarefas from './componentes/tarefas/tarefas';
 
 // Rodapé
 import Footer from './componentes/footer/Footer';
@@ -44,6 +45,7 @@ const Roteador: React.FC = () => {
         <Route path="/informativos/setor/financeiro" element={<><NavTab/> <Financeiro /> </>} />
         <Route path="/informativos/setor/operacional" element={<><NavTab/> <Operacional /> </>} />
         <Route path="/informativos/setor/recursos-humanos" element={<><NavTab/> <RecursosHumanos /> </>} />
+        <Route path="/tarefas" element={<><NavTab/> <Tarefas/> </>}/>
       </Routes>
       <Footer /> 
     </Router>

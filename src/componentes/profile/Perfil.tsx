@@ -142,7 +142,7 @@ export default class Profile extends Component<{}, ProfileState> {
             <div className="modal">
               <h2>Enviar Documento</h2>
               <p>Selecione o arquivo desejado</p>
-              <button className='modal-btn' onClick={this.closeModal}>Fechar Modal</button>
+              <button className='modal-btn' onClick={this.closeModal}>Fechar</button>
 
               <input
                 type="file"
