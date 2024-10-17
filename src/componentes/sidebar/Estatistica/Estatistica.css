@@ -1,0 +1,38 @@
+.estatistica {
+    padding: 20px;
+    background-color: #f9f9f9; /* Fundo suave */
+    border-radius: 5px;
+    max-width: 600px; /* Largura máxima */
+    margin: auto; /* Centraliza a página */
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.estatistica-info {
+    margin-bottom: 20px;
+}
+
+.estatistica-dados {
+    margin-bottom: 20px;
+}
+
+.estatistica-dados h3 {
+    margin: 10px 0; /* Espaço entre os títulos de dados */
+}
+
+.estatistica-acoes button {
+    margin-right: 10px; /* Espaço entre os botões */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.estatistica-acoes button:hover {
+    background-color: #0056b3; /* Cor ao passar o mouse */
+}

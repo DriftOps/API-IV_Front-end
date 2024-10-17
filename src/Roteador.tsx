@@ -46,6 +46,8 @@ const Roteador: React.FC = () => {
         <Route path="/informativos/setor/operacional" element={<><NavTab/> <Operacional /> </>} />
         <Route path="/informativos/setor/recursos-humanos" element={<><NavTab/> <RecursosHumanos /> </>} />
         <Route path="/tarefas" element={<><NavTab/> <Tarefas/> </>}/>
+        <Route path="/tarefas" element={<><NavTab/> <Estatistica/> </>}/>
+
       </Routes>
       <Footer /> 
     </Router>

@@ -1,0 +1,43 @@
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    width: 300px;
+}
+
+.card-header {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.card-body{
+    text-align: left;
+}
+
+.card-body label {
+    text-align: left;
+    display: flex;
+    margin-bottom: 10px; /* Espaço entre as linhas */
+}
+
+.card-body input[type="checkbox"] {
+    margin-right: -100px; /* Espaço entre a checkbox e a descrição */
+    
+}
+
+.card-footer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-container {
+    display: flex; /* Usa flexbox para organizar os cards */
+    gap: 10px; /* Espaço entre os cards */
+    flex-wrap: wrap; /* Permite que os cards se movam para a linha abaixo se não houver espaço suficiente */
+    text-align: left;
+
+
+}

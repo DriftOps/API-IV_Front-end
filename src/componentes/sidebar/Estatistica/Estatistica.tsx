@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { useNavigate } from 'react-router-dom';
+const Estatistica: React.FC = () => {
+    return (
+        <div className="estatistica">
+            <h1>Estatísticas</h1>
+            <p>Pagina de estatistica</p>
+        </div>
+    );
+};
 
-const Estatistica = () => {
-    return null;
-}
-
-
-export default Estatistica;
+export default Estatistica;
