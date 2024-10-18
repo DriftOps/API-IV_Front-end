@@ -1,6 +1,10 @@
 const express = require('express');
 const mysql = require('mysql2'); // Se você estiver usando MySQL
+const cors = require('cors'); // Importando o cors
 const app = express();
+
+// Middleware para permitir CORS
+app.use(cors());
 
 // Middleware para analisar requisições com JSON no corpo
 app.use(express.json());
@@ -9,8 +13,8 @@ app.use(express.json());
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'password', // Insira a sua senha do banco de dados
-  database: 'processos_db', // Insira o nome do seu banco de dados
+  password: '12345', // Insira a sua senha do banco de dados
+  database: 'jjm_bd', // Insira o nome do seu banco de dados
 });
 
 // Verificar se a conexão está funcionando
@@ -24,48 +28,57 @@ db.connect((err) => {
 
 // Rota para cadastrar um novo processo
 app.post('/api/processos', (req, res) => {
-  const { id, events } = req.body;
+  const { events } = req.body;
 
-  // Query para inserir o processo no banco
-  db.query('INSERT INTO processos (id) VALUES (?)', [id], (err) => {
+  // Query para inserir o processo no banco (não precisa do id)
+  db.query('INSERT INTO processos () VALUES ()', (err, result) => {
     if (err) {
       console.error('Erro ao inserir processo:', err);
       return res.status(500).json({ error: 'Erro ao cadastrar processo' });
     }
 
+    const processoId = result.insertId; // Obtém o id gerado
+
     // Inserir os eventos relacionados ao processo
-    events.forEach((event) => {
-      const query = `
-        INSERT INTO eventos 
-        (processo_id, status, sector, location, date, details, responsavel, outrasInformacoes)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-      `;
-      db.query(
-        query,
-        [
-          id,
-          event.status,
-          event.sector,
-          event.location,
-          event.date,
-          event.details,
-          event.responsavel,
-          event.outrasInformacoes,
-        ],
-        (err) => {
-          if (err) {
-            console.error('Erro ao inserir evento:', err);
-            return res.status(500).json({ error: 'Erro ao cadastrar evento' });
+    const insertEvents = events.map((event) => {
+      return new Promise((resolve, reject) => {
+        const query = `
+          INSERT INTO eventos 
+          (processo_id, status, sector, location, date, details, responsavel, outrasInformacoes)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        `;
+        db.query(
+          query,
+          [
+            processoId,
+            event.status,
+            event.sector,
+            event.location,
+            event.date,
+            event.details,
+            event.responsavel,
+            event.outrasInformacoes,
+          ],
+          (err) => {
+            if (err) {
+              console.error('Erro ao inserir evento:', err);
+              reject(err);
+            } else {
+              resolve();
+            }
           }
-        }
-      );
+        );
+      });
     });
 
-    res.status(201).json({ message: 'Processo cadastrado com sucesso' });
+    Promise.all(insertEvents)
+      .then(() => {
+        // Retornar o id do processo cadastrado
+        res.status(201).json({ id: processoId, message: 'Processo cadastrado com sucesso' });
+      })
+      .catch((err) => {
+        console.error('Erro ao inserir eventos:', err);
+        res.status(500).json({ error: 'Erro ao cadastrar eventos' });
+      });
   });
-});
-
-// Iniciar o servidor na porta 3001
-app.listen(3001, () => {
-  console.log('Servidor rodando na porta 3001');
 });

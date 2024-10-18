@@ -5,7 +5,7 @@ import axios from 'axios'; // Importando axios para requisições HTTP
 interface CadastroPopupProps {
   onClose: () => void;
   addProcesso: (processo: {
-    id: string;
+    id?: string;
     events: {
       status: string;
       sector: string;
@@ -37,7 +37,6 @@ const CadastroPopup: React.FC<CadastroPopupProps> = ({ onClose, addProcesso }) =
     e.preventDefault();
 
     const newProcesso = {
-      id: Date.now().toString(), // Gerando um ID temporário para o processo
       events: [
         {
           status: processStatus,
