@@ -1,84 +1,209 @@
-const express = require('express');
-const mysql = require('mysql2'); // Se você estiver usando MySQL
-const cors = require('cors'); // Importando o cors
+import express, { Request, Response } from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors'; // Adicionando CORS
+import CRUDUser from './user';
+import CRUDClient from './client';
+import CRUDProcesso from './processo'; // Adicionando CRUD de processos
+
 const app = express();
+const PORT = 3001;
 
-// Middleware para permitir CORS
-app.use(cors());
+// Middleware
+app.use(bodyParser.json());
+app.use(cors()); // Habilitar CORS para todas as requisições
 
-// Middleware para analisar requisições com JSON no corpo
-app.use(express.json());
+// CRUD de Usuários
+const crudUser = new CRUDUser();
 
-// Conexão com o banco de dados MySQL
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '12345', // Insira a sua senha do banco de dados
-  database: 'jjm_bd', // Insira o nome do seu banco de dados
-});
-
-// Verificar se a conexão está funcionando
-db.connect((err) => {
-  if (err) {
-    console.error('Erro ao conectar ao MySQL:', err);
-  } else {
-    console.log('Conectado ao banco de dados MySQL!');
+app.post('/users', async (req: Request, res: Response) => {
+  try {
+    const user = req.body;
+    const id = await crudUser.create(user);
+    res.status(201).send(`User created with ID ${id}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error creating user');
   }
 });
 
-// Rota para cadastrar um novo processo
-app.post('/api/processos', (req, res) => {
-  const { events } = req.body;
-
-  // Query para inserir o processo no banco (não precisa do id)
-  db.query('INSERT INTO processos () VALUES ()', (err, result) => {
-    if (err) {
-      console.error('Erro ao inserir processo:', err);
-      return res.status(500).json({ error: 'Erro ao cadastrar processo' });
-    }
-
-    const processoId = result.insertId; // Obtém o id gerado
-
-    // Inserir os eventos relacionados ao processo
-    const insertEvents = events.map((event) => {
-      return new Promise((resolve, reject) => {
-        const query = `
-          INSERT INTO eventos 
-          (processo_id, status, sector, location, date, details, responsavel, outrasInformacoes)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        `;
-        db.query(
-          query,
-          [
-            processoId,
-            event.status,
-            event.sector,
-            event.location,
-            event.date,
-            event.details,
-            event.responsavel,
-            event.outrasInformacoes,
-          ],
-          (err) => {
-            if (err) {
-              console.error('Erro ao inserir evento:', err);
-              reject(err);
-            } else {
-              resolve();
-            }
-          }
-        );
-      });
-    });
-
-    Promise.all(insertEvents)
-      .then(() => {
-        // Retornar o id do processo cadastrado
-        res.status(201).json({ id: processoId, message: 'Processo cadastrado com sucesso' });
-      })
-      .catch((err) => {
-        console.error('Erro ao inserir eventos:', err);
-        res.status(500).json({ error: 'Erro ao cadastrar eventos' });
-      });
-  });
+app.get('/users', async (req: Request, res: Response) => {
+  try {
+    const users = await crudUser.readAll();
+    res.json(users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error retrieving users');
+  }
 });
+
+app.get('/users/:id', async (req: Request, res: Response) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const user = await crudUser.readOne(id);
+    if (!user) {
+      res.status(404).send('User not found');
+    } else {
+      res.json(user);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error retrieving user');
+  }
+});
+
+app.put('/users/:id', async (req: Request, res: Response) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const user = req.body;
+    user.id = id; // Adicionando ID ao objeto user
+    await crudUser.update(user);
+    res.send(`User updated with ID ${id}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error updating user');
+  }
+});
+
+app.delete('/users/:id', async (req: Request, res: Response) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    await crudUser.delete(id);
+    res.send(`User deleted with ID ${id}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error deleting user');
+  }
+});
+
+// CRUD de Clientes
+const crudClient = new CRUDClient();
+
+app.post('/clients', async (req: Request, res: Response) => {
+  try {
+    const client = req.body;
+    const id = await crudClient.create(client);
+    res.status(201).send(`Client added with ID ${id}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error creating client');
+  }
+});
+
+app.get('/clients', async (req: Request, res: Response) => {
+  try {
+    const clients = await crudClient.readAll();
+    res.json(clients);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error retrieving clients');
+  }
+});
+
+app.get('/clients/:id', async (req: Request, res: Response) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const client = await crudClient.readOne(id);
+    if (!client) {
+      res.status(404).send('Client not found');
+    } else {
+      res.json(client);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error retrieving client');
+  }
+});
+
+app.put('/clients/:id', async (req: Request, res: Response) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const client = req.body;
+    client.id = id; // Adicionando ID ao objeto client
+    await crudClient.update(client);
+    res.send(`Client updated with ID ${id}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error updating client');
+  }
+});
+
+app.delete('/clients/:id', async (req: Request, res: Response) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    await crudClient.delete(id);
+    res.send(`Client deleted with ID ${id}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error deleting client');
+  }
+});
+
+// CRUD de Processos
+const crudProcesso = new CRUDProcesso();
+
+app.post('/processos', async (req: Request, res: Response) => {
+  try {
+    const processo = req.body;
+    const id = await crudProcesso.create(processo);
+    res.status(201).send(`Processo added with ID ${id}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error creating processo');
+  }
+});
+
+app.get('/processos', async (req: Request, res: Response) => {
+  try {
+    const processos = await crudProcesso.readAll();
+    res.json(processos);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error retrieving processos');
+  }
+});
+
+app.get('/processos/:id', async (req: Request, res: Response) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const processo = await crudProcesso.readOne(id);
+    if (!processo) {
+      res.status(404).send('Processo not found');
+    } else {
+      res.json(processo);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error retrieving processo');
+  }
+});
+
+app.put('/processos/:id', async (req: Request, res: Response) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const processo = req.body;
+    processo.id = id; // Adicionando ID ao objeto processo
+    await crudProcesso.update(processo);
+    res.send(`Processo updated with ID ${id}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error updating processo');
+  }
+});
+
+app.delete('/processos/:id', async (req: Request, res: Response) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    await crudProcesso.delete(id);
+    res.send(`Processo deleted with ID ${id}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error deleting processo');
+  }
+});
+
+// Iniciar o servidor
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
+
+export default app;

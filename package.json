@@ -58,5 +58,6 @@
   "devDependencies": {
     "@types/materialize-css": "^1.0.11",
     "@types/react-input-mask": "^3.0.5"
-  }
+  },
+"proxy": "http://localhost:3001"
 }
