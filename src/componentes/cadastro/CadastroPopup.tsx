@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import './CadastroPopup.css';
-import axios from 'axios'; // Importando axios para requisições HTTP
 
 interface CadastroPopupProps {
   onClose: () => void;
   addProcesso: (processo: {
-    id?: string;
+    id: string; // ID agora será um número aleatório de 5 dígitos
     events: {
       status: string;
       sector: string;
@@ -33,16 +32,20 @@ const CadastroPopup: React.FC<CadastroPopupProps> = ({ onClose, addProcesso }) =
     setProcessInfo({ ...processInfo, [name]: value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Gera um ID aleatório de 5 dígitos
+    const randomId = Math.floor(10000 + Math.random() * 90000).toString();
+
     const newProcesso = {
+      id: randomId, // ID aleatório
       events: [
         {
           status: processStatus,
           sector: processType,
           location: processInfo.location,
-          date: new Date().toISOString(),
+          date: new Date().toLocaleString('pt-BR'), // Formata a data para português
           details: processInfo.details,
           responsavel: processInfo.responsavel,
           outrasInformacoes: processInfo.outrasInformacoes,
@@ -50,20 +53,8 @@ const CadastroPopup: React.FC<CadastroPopupProps> = ({ onClose, addProcesso }) =
       ],
     };
 
-    try {
-      // Requisição POST para o backend para salvar os dados no MySQL
-      const response = await axios.post('http://localhost:3001/api/processos', newProcesso);
-
-      if (response.status === 201 || response.status === 200) {
-        console.log('Processo cadastrado com sucesso no banco de dados.');
-        addProcesso(newProcesso); // Adiciona o processo à lista local
-        onClose(); // Fecha o popup após cadastro
-      } else {
-        console.error('Erro ao cadastrar o processo. Status:', response.status);
-      }
-    } catch (error) {
-      console.error('Erro na requisição:', error);
-    }
+    addProcesso(newProcesso); // Adiciona o processo à lista local
+    onClose(); // Fecha o popup após cadastro
   };
 
   return (

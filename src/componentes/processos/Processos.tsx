@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Processos.css';
 import OrderDropdown from '../order/OrderDropdown';
 import OrderTimeline from '../order/OrderTimeline';
 import CadastroPopup from '../cadastro/CadastroPopup';
-import axios from 'axios';
 
 interface Event {
   status: string;
@@ -21,8 +20,7 @@ interface Processo {
 }
 
 const Processos: React.FC = () => {
-  const [processos, setProcessos] = useState<Processo[]>([]);
-  const [processosLocal, setProcessosLocal] = useState<Processo[]>([
+  const [processos, setProcessos] = useState<Processo[]>([
     {
       id: '12345',
       events: [
@@ -94,24 +92,11 @@ const Processos: React.FC = () => {
     },
     // Outros processos...
   ]);
+
   const [selectedProcesso, setSelectedProcesso] = useState<string | null>(null);
   const [isCadastroOpen, setIsCadastroOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [openDetails, setOpenDetails] = useState<{ [key: string]: number | null }>({});
-
-  // Função para buscar processos do banco
-  const getProcessos = async () => {
-    try {
-      const response = await axios.get('http://localhost:3001/api/processos');
-      setProcessos(response.data);
-    } catch (error) {
-      console.error('Erro ao buscar processos do banco:', error);
-    }
-  };
-
-  useEffect(() => {
-    getProcessos();
-  }, []);
 
   const handleSelectOrder = (orderId: string) => {
     setSelectedProcesso(orderId);
@@ -121,12 +106,11 @@ const Processos: React.FC = () => {
     setIsCadastroOpen(true);
   };
 
-  // Função para adicionar um novo processo
   const addProcesso = (novoProcesso: Processo) => {
     setProcessos((prevProcessos) => [...prevProcessos, novoProcesso]);
   };
 
-  const filteredProcessos = processos.concat(processosLocal).filter((processo) =>
+  const filteredProcessos = processos.filter((processo) =>
     processo.id.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -166,10 +150,9 @@ const Processos: React.FC = () => {
       {isCadastroOpen && (
         <CadastroPopup
           onClose={() => setIsCadastroOpen(false)}
-          addProcesso={addProcesso}  // Passando a função addProcesso
+          addProcesso={addProcesso}
         />
       )}
-
 
       {filteredProcessos.map((processo) => (
         <div key={processo.id} className="processo-card">
