@@ -16,14 +16,41 @@ const RecursosHumanos: React.FC = () => {
       </header>
       <section className="info-section">
         <h2>Informativos</h2>
-        <ul className="info-list">
-          <li>Novas contratações: Damos boas-vindas aos nossos novos colaboradores!</li>
-          <li>Revisão de benefícios: A revisão dos pacotes de benefícios será realizada em novembro.</li>
-          <li>Treinamento e Desenvolvimento: O próximo workshop ocorrerá no dia 25 de outubro, às 14h.</li>
-          <li>Feedbacks: Lembrete para todos os líderes: a coleta de feedbacks deve ser feita até o final do mês.</li>
-        </ul>
+        <div className="card-container">
+          <div className="card">
+            <i className="fas fa-user-plus"></i>
+            <h3>Novas Contratações</h3>
+            <p>Damos boas-vindas aos nossos novos colaboradores!</p>
+          </div>
+          <div className="card">
+            <i className="fas fa-gift"></i>
+            <h3>Revisão de Benefícios</h3>
+            <p>A revisão dos pacotes de benefícios será realizada em novembro.</p>
+          </div>
+          <div className="card">
+            <i className="fas fa-chalkboard-teacher"></i>
+            <h3>Treinamento e Desenvolvimento</h3>
+            <p>O próximo workshop ocorrerá no dia 25 de outubro, às 14h.</p>
+          </div>
+          <div className="card">
+            <i className="fas fa-comments"></i>
+            <h3>Feedbacks</h3>
+            <p>Os líderes devem coletar feedbacks até o final do mês.</p>
+          </div>
+          <div className="card">
+            <i className="fas fa-chart-line"></i>
+            <h3>Avaliação de Desempenho</h3>
+            <p>As avaliações de desempenho serão realizadas no próximo trimestre.</p>
+          </div>
+          <div className="card">
+            <i className="fas fa-heartbeat"></i>
+            <h3>Bem-estar dos Colaboradores</h3>
+            <p>Participe das ações voltadas ao bem-estar dos colaboradores.</p>
+          </div>
+          <button onClick={handleVoltar}>Voltar</button>
+        </div>
       </section>
-      <button onClick={handleVoltar}>Voltar</button>
+      
     </div>
   );
 };
