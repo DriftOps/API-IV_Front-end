@@ -10,6 +10,7 @@ interface ProfileState {
   rg: string;
   setor: string;
   isModalOpen: boolean;
+  selectedFile: File | null; // Adicionado para armazenar o arquivo selecionado
 }
 
 export default class Profile extends Component<{}, ProfileState> {
@@ -22,6 +23,7 @@ export default class Profile extends Component<{}, ProfileState> {
       rg: '12.345.678-9',
       setor: 'Operacional',
       isModalOpen: false,
+      selectedFile: null, // Inicializa como null
     };
   }
 
@@ -34,7 +36,7 @@ export default class Profile extends Component<{}, ProfileState> {
   };
 
   closeModal = () => {
-    this.setState({ isModalOpen: false });
+    this.setState({ isModalOpen: false, selectedFile: null }); // Reseta o arquivo ao fechar
   };
 
   handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -48,14 +50,13 @@ export default class Profile extends Component<{}, ProfileState> {
   handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files; // Obtém os arquivos selecionados
     if (files && files.length > 0) {
+      this.setState({ selectedFile: files[0] }); // Atualiza o estado com o arquivo selecionado
       console.log('Arquivo selecionado:', files[0]); // Faz algo com o arquivo selecionado
     }
   };
 
-
-
   render() {
-    const { isEditing, name, cpf, rg, setor, isModalOpen } = this.state;
+    const { isEditing, name, cpf, rg, setor, isModalOpen, selectedFile } = this.state;
 
     return (
       <div className="profile">
@@ -131,32 +132,52 @@ export default class Profile extends Component<{}, ProfileState> {
           {isEditing ? 'Salvar' : 'Editar'}
         </button>
 
-        
-
         {/* Botão para abrir o modal */}
         <button onClick={this.openModal}>Enviar Documento</button>
 
         {/* Modal */}
         {isModalOpen && (
-          <div className="modal-overlay">
-            <div className="modal">
-              <h2>Enviar Documento</h2>
-              <p>Selecione o arquivo desejado</p>
-              <button className='modal-btn' onClick={this.closeModal}>Fechar</button>
+  <div className="modal-overlay">
+    <div className="modal">
+      <h2>Enviar Documento</h2>
+      <p>Selecione o arquivo desejado</p>
 
-              <input
-                type="file"
-                id="file-input"
-                style={{ display: 'none' }}
-                onChange={this.handleFileSelect}
-              />
-              <button className='explorer-button' onClick={() => document.getElementById('file-input').click()}>
-                Selecionar arquivo
-              </button>
+      {/* Exibir o nome do arquivo selecionado, se houver */}
+      {selectedFile && <p>Arquivo Selecionado: {selectedFile.name}</p>}
 
-            </div>
-          </div>
-        )}
+      {/* Div para organizar os botões */}
+      <div className="modal-buttons">
+        <button className='modal-btn' onClick={this.closeModal}>Fechar</button>
+
+        <input
+          type="file"
+          id="file-input"
+          style={{ display: 'none' }}
+          onChange={this.handleFileSelect}
+        />
+        <button className='explorer-button' onClick={() => document.getElementById('file-input')?.click()}>
+          Selecionar arquivo
+        </button>
+
+        <button 
+          className="upload-button" 
+          onClick={() => { 
+            if (selectedFile) {
+              console.log('Iniciar upload do arquivo:', selectedFile.name); 
+              // Adicione aqui a lógica de upload
+            } else {
+              alert('Por favor, selecione um arquivo antes de fazer o upload.');
+            }
+          }}
+        >
+          Upload
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+
       </div>
     );
   }

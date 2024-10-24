@@ -1,46 +1,83 @@
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  z-index: 1000; /* Garante que o modal fique acima de outros elementos */
+}
 
-    /* Altere as dimensões aqui */
-    width: 400px; /* Largura do modal */
-    height: 500px; /* Altura do modal */
-  }
-  
-  .modal-btn{
-    display: block; /* Para que o botão ocupe toda a linha */
-    margin: 20px auto; /* Margem automática para centralizar horizontalmente */
-    margin-top: 350px;
-  }
+.modal {
+  background-color: white; /* Cor de fundo do modal */
+  padding: 20px; /* Espaçamento interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para o modal */
+  max-width: 400px; /* Largura máxima do modal */
+  width: 100%; /* Largura responsiva */
+}
 
-  .explorer-button {
-    position: relative;
-    top: -400px;
-    margin-top: 0px; /* Espaço acima do botão */
-    padding: 10px 15px; /* Padding para aumentar a área clicável */
-    background-color: #007bff; /* Cor de fundo do botão */
-    color: white; /* Cor do texto */
-    border: none; /* Remover borda padrão */
-    border-radius: 5px; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor em forma de mão ao passar sobre o botão */
-    transition: background-color 0.3s; /* Efeito de transição */
-  }
-  
-  .explorer-button:hover {
-    background-color: #0056b3; /* Cor ao passar o mouse */
-  }
+
+.modal h2 {
+  margin-bottom: 20px; /* Espaço abaixo do título */
+}
+
+.modal p {
+  margin-bottom: 15px; /* Espaço abaixo do texto */
+}
+
+.modal-btn,
+.explorer-button {
+  margin: 10px; /* Espaçamento entre os botões */
+  padding: 10px 20px; /* Tamanho dos botões */
+  border: none; /* Remover borda padrão */
+  border-radius: 5px; /* Bordas arredondadas */
+  background-color: #0a4c71; /* Cor de fundo do botão */
+  color: white; /* Cor do texto do botão */
+  cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+}
+
+.modal-btn:hover,
+.explorer-button:hover {
+  background-color: #084057; /* Cor mais escura no hover */
+}
+
+.upload-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #0a4c71; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.upload-button:hover {
+  background-color: #083e5e; /* Cor de fundo ao passar o mouse */
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-around; /* Espaço entre os botões */
+  align-items: center;
+  margin-top: 20px;
+}
+
+.modal-btn, .explorer-button, .upload-button {
+  padding: 10px 20px;
+  background-color: #0a4c71; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 10px; /* Espaçamento entre os botões */
+}
+
+.modal-btn:hover, .explorer-button:hover, .upload-button:hover {
+  background-color: #083e5e; /* Cor de fundo ao passar o mouse */
+}

@@ -1,25 +1,15 @@
 
 import React from 'react';
-import './tarefas.css'; 
 import Card from './card';
 
-const Listas = () => {
-    return (
-        <div className="container">
-            <div className="div-item">
-                <Card title="Done" /> 
-            </div>
-            <div className="div-item">
-                <Card title="Doing" /> 
-            </div>
-            <div className="div-item">
-                <Card title="To do" />
-            </div>
-            <div className="Adicionar lista">
-               
-            </div>
-        </div>
-    );
+const CardContainer = () => {
+  return (
+    <div className="card-container"> {/* Contêiner para os cards */}
+      <Card title="Tarefas Cumpridas" />
+      <Card title="Tarefas em Processo" />
+      <Card title="Tarefas pendentes" />
+    </div>
+  );
 };
 
-export default Listas;
+export default CardContainer;

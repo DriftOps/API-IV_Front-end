@@ -1,14 +1,37 @@
 .footer {
   background-color: #0a4c71;
-  padding: 10px;
+  padding: 20px;
   color: #fff;
   text-align: center;
   margin-top: 100px;
-}
-
-body {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Para que o footer fique sempre na parte inferior */
+  flex-wrap: wrap; /* Permite quebra de linha */
+  justify-content: space-around; /* Espaço igual entre os cartões */
 }
 
+.footer-card {
+  background-color: rgba(255, 255, 255, 0.1); /* Fundo leve */
+  border-radius: 8px; /* Bordas arredondadas */
+  padding: 15px; /* Espaçamento interno */
+  margin: 10px; /* Margem entre cartões */
+  flex: 1; /* Cada cartão ocupa espaço igual */
+  min-width: 200px; /* Largura mínima para cartões */
+}
+
+.footer p {
+  margin: 5px 0;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footer strong {
+  display: block;
+  margin-bottom: 10px;
+}
