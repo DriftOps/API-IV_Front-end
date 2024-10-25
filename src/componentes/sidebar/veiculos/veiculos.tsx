@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './veiculos.css';
 
 const Veiculos = () => {
@@ -37,6 +38,13 @@ const Veiculos = () => {
     console.log('Veículo editado:', veiculo);
     // Adicione a lógica para salvar os dados
   };
+
+  const navigate = useNavigate();
+
+  const handleVoltar = () => {
+    navigate(-1);
+  };
+
 
   return (
     <div className="veiculo-container">
@@ -83,7 +91,10 @@ const Veiculos = () => {
               required
             />
           </div>
-          <button type="submit">Salvar</button>
+          <div className="button-container">
+            <button type="submit">Salvar</button>
+            <button onClick={handleVoltar}>Voltar</button>
+          </div>
         </form>
       </div>
     </div>
