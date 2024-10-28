@@ -57,7 +57,7 @@ function principal() {
                 <h2>Download da apresentação </h2>
                 <p>Para maiores informações, baixe nossa apresentação no formato PDF.</p>
                 <br /><br />
-                <a href="/public/JJMLOG.pdf" download className="download-button">DOWNLOAD</a>
+                <a href="/JJMLOG.pdf" download className="download-button">DOWNLOAD</a>
             </section>
 
 

@@ -19,6 +19,7 @@ import Almoxarifado from './componentes/informativos/setores/almoxarifado';
 import Financeiro from './componentes/informativos/setores/financeiro';
 import Operacional from './componentes/informativos/setores/operacional';
 import RecursosHumanos from './componentes/informativos/setores/recursos-humanos';
+import Comercial from './componentes/informativos/setores/comercial';
 import Processos from './componentes/processos/Processos';
 import Tarefas from './componentes/tarefas/tarefas';
 
@@ -44,6 +45,7 @@ const Roteador: React.FC = () => {
         <Route path="/informativos/setor/almoxarifado" element={<><NavTab/> <Almoxarifado /> </>} />
         <Route path="/informativos/setor/financeiro" element={<><NavTab/> <Financeiro /> </>} />
         <Route path="/informativos/setor/operacional" element={<><NavTab/> <Operacional /> </>} />
+        <Route path="/informativos/setor/comercial" element={<><NavTab/> <Comercial /> </>} />
         <Route path="/informativos/setor/recursos-humanos" element={<><NavTab/> <RecursosHumanos /> </>} />
         <Route path="/tarefas" element={<><NavTab/> <Tarefas/> </>}/>
         <Route path="/tarefas" element={<><NavTab/> <Estatistica/> </>}/>
