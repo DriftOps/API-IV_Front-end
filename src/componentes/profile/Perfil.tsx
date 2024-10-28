@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Perfil.css';
 import userphoto from '../img/user.png';
-import './importation.css'
+import './importation.css';
 
 interface ProfileState {
   isEditing: boolean;
@@ -10,7 +10,8 @@ interface ProfileState {
   rg: string;
   setor: string;
   isModalOpen: boolean;
-  selectedFile: File | null; // Adicionado para armazenar o arquivo selecionado
+  selectedFile: File | null;
+  profilePic: string; // Adicionado para armazenar a URL da imagem de perfil
 }
 
 export default class Profile extends Component<{}, ProfileState> {
@@ -23,7 +24,8 @@ export default class Profile extends Component<{}, ProfileState> {
       rg: '12.345.678-9',
       setor: 'Operacional',
       isModalOpen: false,
-      selectedFile: null, // Inicializa como null
+      selectedFile: null,
+      profilePic: userphoto, // Inicializa com a imagem padrão
     };
   }
 
@@ -36,7 +38,7 @@ export default class Profile extends Component<{}, ProfileState> {
   };
 
   closeModal = () => {
-    this.setState({ isModalOpen: false, selectedFile: null }); // Reseta o arquivo ao fechar
+    this.setState({ isModalOpen: false, selectedFile: null });
   };
 
   handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -48,20 +50,37 @@ export default class Profile extends Component<{}, ProfileState> {
   };
 
   handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files; // Obtém os arquivos selecionados
+    const files = event.target.files;
     if (files && files.length > 0) {
-      this.setState({ selectedFile: files[0] }); // Atualiza o estado com o arquivo selecionado
-      console.log('Arquivo selecionado:', files[0]); // Faz algo com o arquivo selecionado
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.setState({ profilePic: reader.result as string });
+      };
+      reader.readAsDataURL(files[0]);
     }
   };
 
   render() {
-    const { isEditing, name, cpf, rg, setor, isModalOpen, selectedFile } = this.state;
+    const { isEditing, name, cpf, rg, setor, isModalOpen, selectedFile, profilePic } = this.state;
 
     return (
       <div className="profile">
-        <img src={userphoto} alt="perfil" className="profile-pic" />
+        <img src={profilePic} alt="perfil" className="profile-pic" />
         
+        {/* Botão para alterar a imagem de perfil */}
+        <div className="profile-pic-update">
+          <input
+            type="file"
+            id="profile-pic-input"
+            style={{ display: 'none' }}
+            onChange={this.handleFileSelect}
+            accept="image/*"
+          />
+          <button onClick={() => document.getElementById('profile-pic-input')?.click()}>
+            Alterar Imagem de Perfil
+          </button>
+        </div>
+
         <div className="input-group user-name-group">
           <strong>Nome de Usuário:</strong>
           {isEditing ? (
@@ -137,47 +156,42 @@ export default class Profile extends Component<{}, ProfileState> {
 
         {/* Modal */}
         {isModalOpen && (
-  <div className="modal-overlay">
-    <div className="modal">
-      <h2>Enviar Documento</h2>
-      <p>Selecione o arquivo desejado</p>
+          <div className="modal-overlay">
+            <div className="modal">
+              <h2>Enviar Documento</h2>
+              <p>Selecione o arquivo desejado</p>
 
-      {/* Exibir o nome do arquivo selecionado, se houver */}
-      {selectedFile && <p>Arquivo Selecionado: {selectedFile.name}</p>}
+              {selectedFile && <p>Arquivo Selecionado: {selectedFile.name}</p>}
 
-      {/* Div para organizar os botões */}
-      <div className="modal-buttons">
-        <button className='modal-btn' onClick={this.closeModal}>Fechar</button>
+              <div className="modal-buttons">
+                <button className='modal-btn' onClick={this.closeModal}>Fechar</button>
 
-        <input
-          type="file"
-          id="file-input"
-          style={{ display: 'none' }}
-          onChange={this.handleFileSelect}
-        />
-        <button className='explorer-button' onClick={() => document.getElementById('file-input')?.click()}>
-          Selecionar arquivo
-        </button>
+                <input
+                  type="file"
+                  id="file-input"
+                  style={{ display: 'none' }}
+                  onChange={this.handleFileSelect}
+                />
+                <button className='explorer-button' onClick={() => document.getElementById('file-input')?.click()}>
+                  Selecionar arquivo
+                </button>
 
-        <button 
-          className="upload-button" 
-          onClick={() => { 
-            if (selectedFile) {
-              console.log('Iniciar upload do arquivo:', selectedFile.name); 
-              // Adicione aqui a lógica de upload
-            } else {
-              alert('Por favor, selecione um arquivo antes de fazer o upload.');
-            }
-          }}
-        >
-          Upload
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
-
+                <button
+                  className="upload-button"
+                  onClick={() => {
+                    if (selectedFile) {
+                      console.log('Iniciar upload do arquivo:', selectedFile.name);
+                    } else {
+                      alert('Por favor, selecione um arquivo antes de fazer o upload.');
+                    }
+                  }}
+                >
+                  Upload
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
