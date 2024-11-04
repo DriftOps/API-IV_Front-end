@@ -39,10 +39,6 @@ export default class Sidebar extends Component<{}, State> {
             <>
               <div className="sidebar">
                 <div className="sidebar-content">
-                  {/* Botão de fechar (X) */}
-                  <button className="close-button" onClick={this.closeMenu}>
-                    <i className="bx bx-x"></i>
-                  </button>
 
                   <ul className="lists">
                     <li className="list">

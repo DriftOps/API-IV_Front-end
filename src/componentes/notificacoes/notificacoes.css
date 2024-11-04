@@ -1,0 +1,133 @@
+.notif-nav {
+  position: absolute;
+  top: 21px;
+  left: 950px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+.bxs-bell {
+  color: white;
+}
+
+.notif-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: black;
+  outline: none; 
+}
+
+.notif-button:hover {
+  background: none; 
+  color: black;
+}
+
+.notif-button:focus {
+  outline: none; 
+}
+
+.notif-dropdown {
+  position: absolute; 
+  top: 70px; 
+  right: -93px;
+  width: 360px;
+  background-color: #000000;
+  color: white;
+  display: none; 
+  z-index: 999;
+  border-radius: 20px;
+}
+
+.notif-dropdown.notif-open {
+  display: block;
+}
+
+.notif-dropdown-content {
+  padding: 20px;
+}
+
+.notif-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notif-item {
+  background-color: #3b3b3b;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.notif-header {
+  display: flex;
+  gap: 12px;
+}
+
+.notif-header i {
+  font-size: 30px;
+  color: #ff8c00;
+}
+
+.notif-title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.notif-content {
+  font-size: 14px;
+  color: #c0c0c0;
+  margin-top: 4px;
+}
+
+.notif-date {
+  font-size: 12px;
+  color: #8f8f8f;
+  margin-top: 4px;
+}
+
+.notif-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.notif-btn {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.notif-btn.primary {
+  background-color: #00c37a;
+  color: white;
+}
+
+.notif-btn.secondary {
+  background-color: #444;
+  color: white;
+}
+
+.notif-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.notif-overlay-active {
+  opacity: 1;
+  pointer-events: auto;
+}

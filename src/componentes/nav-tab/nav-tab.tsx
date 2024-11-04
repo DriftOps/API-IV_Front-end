@@ -4,6 +4,7 @@
   import './navbar.css';
   import Sidebar from '../sidebar/sidebar';
   import { Component } from 'react';
+  import Notificações from '../notificacoes/notificacoes';
 
 
   export default class Header extends Component {
@@ -35,6 +36,9 @@
           {/* <span className="nav-item ">
           <Link to="/historico" className='nav-item'>Histórico</Link>
             </span> */}
+            <span>
+              <Notificações/>
+            </span>        
         </div>
       </div>
         </div>         
