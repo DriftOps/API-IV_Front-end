@@ -35,7 +35,7 @@
   top: 70px; 
   right: -93px;
   width: 360px;
-  background-color: #f0f2f5;
+  background-color: #ffffff;
   color: #333333;
   display: none; 
   z-index: 999;
@@ -58,11 +58,12 @@
 }
 
 .notif-item {
-  background-color: #ffffff;
+  background-color: #eaeaea;
   color: #333333;
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 12px;
+  box-shadow: 0px 4px 8px rgba(0.3, 0.3, 0.3, 0.3);
 }
 
 .notif-header {
