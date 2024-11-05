@@ -1,0 +1,90 @@
+.container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .equipeLista {
+    width: 25%;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+  }
+  
+  .areaDeChat {
+    width: 75%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Para empurrar o footer para o fundo */
+  }
+  
+  .listaEquipes {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  .equipeItem {
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .equipeItem:hover {
+    background-color: #d0d0d0;
+  }
+  
+  .mensagens {
+    flex-grow: 1; /* Faz a área de mensagens crescer para ocupar o espaço disponível */
+    overflow-y: auto; /* Adiciona rolagem vertical se necessário */
+    margin-bottom: 10px; /* Espaço acima do footer */
+    display: flex; /* Ativa o modelo de flexbox */
+    flex-direction: column; /* Alinha os itens em coluna */
+    align-items: flex-end; /* Alinha as mensagens do usuário à direita */
+}
+
+.mensagemUsuario {
+    text-align: right;
+    background-color: #d1e7dd; /* Cor de fundo para a mensagem do usuário */
+    padding: 8px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    display: inline-block; /* Faz a mensagem ocupar apenas o espaço necessário */
+    max-width: 70%; /* Limita a largura máxima da mensagem */
+    margin: 5px 0; /* Margem acima e abaixo da mensagem */
+}
+
+.mensagemOutro {
+    text-align: left;
+    background-color: #e7f1ff; /* Cor de fundo para mensagens de outros usuários */
+    padding: 8px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    display: inline-block; /* Faz a mensagem ocupar apenas o espaço necessário */
+    max-width: 70%; /* Limita a largura máxima da mensagem */
+    margin: 5px 0; /* Margem acima e abaixo da mensagem */
+}
+
+  
+  .footerChat {
+    display: flex; /* Para alinhar o input e o botão na mesma linha */
+    align-items: center; /* Centraliza verticalmente os itens */
+    border-top: 1px solid #ccc; /* Borda superior para separar o footer das mensagens */
+  }
+  
+  .footerChat input {
+    flex: 1; /* O campo de input ocupará o espaço restante */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .btnAnexar {
+    background: transparent; /* Fundo transparente para o botão */
+    border: none; /* Remove a borda padrão */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    font-size: 18px; /* Tamanho do ícone */
+    margin-left: 10px; /* Espaço à esquerda do botão */
+  }
+  

@@ -10,6 +10,7 @@ import Veiculos from './componentes/sidebar/veiculos/veiculos';
 import AdicionarUsuario from './componentes/sidebar/AdicionarUsuario/AdicionarUsuario';
 import Configuracao from './componentes/sidebar/Configuracao/Configuracao';
 import Estatistica from './componentes/sidebar/Estatistica/Estatistica';
+import Chat from './componentes/sidebar/chat/chat';  
 
 // Navbar
 import NavTab from './componentes/nav-tab/nav-tab'
@@ -49,6 +50,7 @@ const Roteador: React.FC = () => {
         <Route path="/informativos/setor/recursos-humanos" element={<><NavTab/> <RecursosHumanos /> </>} />
         <Route path="/tarefas" element={<><NavTab/> <Tarefas/> </>}/>
         <Route path="/tarefas" element={<><NavTab/> <Estatistica/> </>}/>
+        <Route path="/chat" element={<><NavTab/> <Chat/> </>}/>
 
       </Routes>
       <Footer /> 
