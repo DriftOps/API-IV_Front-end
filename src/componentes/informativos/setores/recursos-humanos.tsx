@@ -47,8 +47,9 @@ const RecursosHumanos: React.FC = () => {
             <h3>Bem-estar dos Colaboradores</h3>
             <p>Participe das ações voltadas ao bem-estar dos colaboradores.</p>
           </div>
-          <button onClick={handleVoltar}>Voltar</button>
         </div>
+        
+        <button onClick={handleVoltar}>Voltar</button>
       </section>
       
     </div>

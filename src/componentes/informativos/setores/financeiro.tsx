@@ -47,8 +47,9 @@ const Financeiro: React.FC = () => {
             <h3>Controle de Despesas</h3>
             <p>Os relatórios de despesas devem ser analisados e ajustados até o final do mês.</p>
           </div>
-          <button onClick={handleVoltar}>Voltar</button>
+          
         </div>
+        <button onClick={handleVoltar}>Voltar</button>
       </section>
       
     </div>

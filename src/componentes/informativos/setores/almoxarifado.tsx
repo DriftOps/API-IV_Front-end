@@ -47,8 +47,9 @@ const Almoxarifado: React.FC = () => {
             <h3>Segurança no Trabalho</h3>
             <p>Utilize os equipamentos de proteção adequados durante o trabalho.</p>
           </div>
-          <button onClick={handleVoltar}>Voltar</button>
+          
         </div>
+        <button onClick={handleVoltar}>Voltar</button>
       </section>
     </div>
   );

@@ -47,8 +47,10 @@ const Operacional: React.FC = () => {
             <h3>Controle de Estoque</h3>
             <p>Acompanhe a movimentação de materiais e o controle de estoque diariamente.</p>
           </div>
-          <button onClick={handleVoltar}>Voltar</button>
+          
         </div>
+        <h2>TUTORIAIS OPERACIONAL</h2>
+        <button onClick={handleVoltar}>Voltar</button>
       </section>
      
     </div>
