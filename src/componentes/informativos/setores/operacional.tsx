@@ -50,6 +50,21 @@ const Operacional: React.FC = () => {
           
         </div>
         <h2>TUTORIAIS OPERACIONAL</h2>
+        <div className="card">
+            <i className="fas fa-users"></i>
+            <h3>Importancia do Setor Operacional</h3>
+            <p>Conheça sobre como a sua função tem um papel importante na empresa!</p>
+            <br></br>
+            <iframe width="200" height="160" src="https://www.youtube.com/embed/ugBstYoDBBU?si=5fIwbHKuuUlH_VT9" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+          </div>
+          <div className="card">
+            <i className="fas fa-bus"></i>
+            <h3>Operação Logística O que você precisa Saber!
+            </h3>
+            <p>Entenda os processos, as tarefas e os objetivos!</p>
+            <br></br>
+            <iframe width="200" height="160" src="https://www.youtube.com/embed/JRBK_0UYz48?si=4Nw0w6z0t1WJ519N" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
+          </div>
         <button onClick={handleVoltar}>Voltar</button>
       </section>
      
