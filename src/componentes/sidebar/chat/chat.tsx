@@ -47,7 +47,7 @@ function PaginaDeChat() {
   };
 
   return (
-    <div className="container">
+    <div className="chat-container">
       <div className="equipeLista">
         <h2>Equipes</h2>
         <ul className="listaEquipes">
