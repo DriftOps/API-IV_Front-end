@@ -46,10 +46,11 @@ const Operacional: React.FC = () => {
             <i className="fas fa-warehouse"></i>
             <h3>Controle de Estoque</h3>
             <p>Acompanhe a movimentação de materiais e o controle de estoque diariamente.</p>
-          </div>
-          
+          </div> 
         </div>
+        
         <h2>TUTORIAIS OPERACIONAL</h2>
+        <div className="card-container">
         <div className="card">
             <i className="fas fa-users"></i>
             <h3>Importancia do Setor Operacional</h3>
@@ -58,12 +59,21 @@ const Operacional: React.FC = () => {
             <iframe width="200" height="160" src="https://www.youtube.com/embed/ugBstYoDBBU?si=5fIwbHKuuUlH_VT9" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
           </div>
           <div className="card">
-            <i className="fas fa-bus"></i>
+            <i className="fas fa-truck"></i>
             <h3>Operação Logística O que você precisa Saber!
             </h3>
             <p>Entenda os processos, as tarefas e os objetivos!</p>
             <br></br>
             <iframe width="200" height="160" src="https://www.youtube.com/embed/JRBK_0UYz48?si=4Nw0w6z0t1WJ519N" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
+          </div>
+          <div className="card">
+            <i className="fas fa-truck"></i>
+            <h3>Operação Logística O que você precisa Saber!
+            </h3>
+            <p>Entenda os processos, as tarefas e os objetivos!</p>
+            <br></br>
+            <iframe width="200" height="160" src="https://www.youtube.com/embed/XpP7ebpUgjc?si=i0vk0nrzQkJAro1_" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
+          </div>
           </div>
         <button onClick={handleVoltar}>Voltar</button>
       </section>
