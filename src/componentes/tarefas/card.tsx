@@ -1,45 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import './card.css'; 
 
-const Card = ({ title }) => {
-    const [tasks, setTasks] = useState(() => {
-        // Recupera as tarefas do localStorage ao inicializar o estado
-        const savedTasks = localStorage.getItem(title);
-        return savedTasks ? JSON.parse(savedTasks) : [];
-    }); 
-    const [taskInput, setTaskInput] = useState(''); 
-    const [selectedTasks, setSelectedTasks] = useState(new Set());
-
-    // Salva as tarefas no localStorage sempre que elas mudam
-    useEffect(() => {
-        localStorage.setItem(title, JSON.stringify(tasks));
-    }, [tasks, title]);
+const Card = ({ title, tasks, onDropTask }) => { 
+    const [taskInput, setTaskInput] = useState('');
 
     const addTask = () => {
         if (taskInput) {
-            setTasks([...tasks, taskInput]);
+            onDropTask(taskInput, title, title); 
             setTaskInput('');
         }
     };
 
-    const toggleTaskSelection = (task) => {
-        const newSelectedTasks = new Set(selectedTasks);
-        if (newSelectedTasks.has(task)) {
-            newSelectedTasks.delete(task);
-        } else {
-            newSelectedTasks.add(task);
-        }
-        setSelectedTasks(newSelectedTasks);
+    const handleDragStart = (task) => (event) => {
+        event.dataTransfer.setData('text/plain', task);
+        event.dataTransfer.setData('source', title); 
     };
 
-    const deleteSelectedTasks = () => {
-        const newTasks = tasks.filter(task => !selectedTasks.has(task));
-        setTasks(newTasks);
-        setSelectedTasks(new Set());
+    const handleDrop = (event) => {
+        event.preventDefault();
+        const task = event.dataTransfer.getData('text/plain');
+        const source = event.dataTransfer.getData('source');
+
+        if (source !== title) {
+            onDropTask(task, source, title);
+        }
+    };
+
+    const handleDragOver = (event) => {
+        event.preventDefault();
     };
 
     return (
-        <div className="card">
+        <div className="card" onDrop={handleDrop} onDragOver={handleDragOver}>
             <div className="card-header">
                 <h3>{title}</h3>
                 <button className="options-button">...</button>
@@ -55,8 +47,9 @@ const Card = ({ title }) => {
                     {tasks.map((task, index) => (
                         <div 
                             key={index} 
-                            className={`task-item ${selectedTasks.has(task) ? 'selected' : ''}`}
-                            onClick={() => toggleTaskSelection(task)}
+                            className="task-item"
+                            draggable
+                            onDragStart={handleDragStart(task)}
                         >
                             {task}
                         </div>
@@ -65,7 +58,6 @@ const Card = ({ title }) => {
             </div>
             <div className="card-footer">
                 <button className="add-button" onClick={addTask}>+</button> 
-                <button onClick={deleteSelectedTasks}>Excluir</button>
             </div>
         </div>
     );
