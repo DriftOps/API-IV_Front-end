@@ -48,8 +48,35 @@ const Comercial: React.FC = () => {
             <p>Coletar feedback dos clientes sobre nossos serviços é essencial.</p>
           </div>
         </div>
+        <h2>TUTORIAIS COMERCIAL</h2>
+        <div className="card-container">
+        <div className="card">
+            <i className="fas fa-users"></i>
+            <h3>Importancia do Setor Comercial</h3>
+            <p>Conheça sobre como a sua função tem um papel importante na empresa!</p>
+            <br></br>
+            <span>video</span>
+          </div>
+          <div className="card">
+            <i className="fas fa-truck"></i>
+            <h3>Conheça o Setor Comercial
+            </h3>
+            <p>Entenda os processos, as tarefas e os objetivos!</p>
+            <br></br>
+            <span>video</span>
+          </div>
+          <div className="card">
+            <i className="fas fa-coin"></i>
+            <h3>Entenda o que é Logística
+            </h3>
+            <p>Significado, O Que Faz? 06 Dicas Práticas pra Trabalhá-la no Seu Negócio</p>
+            <br></br>
+            
+          </div>
+          </div>
+          <button onClick={handleVoltar}>Voltar</button>
       </section>
-      <button onClick={handleVoltar}>Voltar</button>
+      
     </div>
   );
 };

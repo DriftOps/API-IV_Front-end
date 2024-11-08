@@ -67,10 +67,10 @@ const Operacional: React.FC = () => {
             <iframe width="200" height="160" src="https://www.youtube.com/embed/JRBK_0UYz48?si=4Nw0w6z0t1WJ519N" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
           </div>
           <div className="card">
-            <i className="fas fa-truck"></i>
-            <h3>Operação Logística O que você precisa Saber!
+            <i className="fas fa-coin"></i>
+            <h3>Entenda o que é Logística
             </h3>
-            <p>Entenda os processos, as tarefas e os objetivos!</p>
+            <p>Significado, O Que Faz? 06 Dicas Práticas pra Trabalhá-la no Seu Negócio</p>
             <br></br>
             <iframe width="200" height="160" src="https://www.youtube.com/embed/XpP7ebpUgjc?si=i0vk0nrzQkJAro1_" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
           </div>
