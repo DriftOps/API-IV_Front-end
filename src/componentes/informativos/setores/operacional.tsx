@@ -56,7 +56,7 @@ const Operacional: React.FC = () => {
             <h3>Importancia do Setor Operacional</h3>
             <p>Conheça sobre como a sua função tem um papel importante na empresa!</p>
             <br></br>
-            <iframe width="200" height="160" src="https://www.youtube.com/embed/ugBstYoDBBU?si=5fIwbHKuuUlH_VT9" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+            <iframe width="210" height="210" src="https://www.youtube.com/embed/ugBstYoDBBU?si=5fIwbHKuuUlH_VT9" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
           </div>
           <div className="card">
             <i className="fas fa-truck"></i>
@@ -64,7 +64,7 @@ const Operacional: React.FC = () => {
             </h3>
             <p>Entenda os processos, as tarefas e os objetivos!</p>
             <br></br>
-            <iframe width="200" height="160" src="https://www.youtube.com/embed/JRBK_0UYz48?si=4Nw0w6z0t1WJ519N" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
+            <iframe width="210" height="210" src="https://www.youtube.com/embed/JRBK_0UYz48?si=4Nw0w6z0t1WJ519N" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
           </div>
           <div className="card">
             <i className="fas fa-chart-line"></i>
@@ -72,7 +72,7 @@ const Operacional: React.FC = () => {
             </h3>
             <p>Significado, O Que Faz? 06 Dicas Práticas pra Trabalhá-la no Seu Negócio</p>
             <br></br>
-            <iframe width="200" height="160" src="https://www.youtube.com/embed/XpP7ebpUgjc?si=i0vk0nrzQkJAro1_" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
+            <iframe width="210" height="210" src="https://www.youtube.com/embed/XpP7ebpUgjc?si=i0vk0nrzQkJAro1_" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
           </div>
           </div>
         <button onClick={handleVoltar}>Voltar</button>

@@ -49,7 +49,37 @@ const Financeiro: React.FC = () => {
           </div>
           
         </div>
-        <button onClick={handleVoltar}>Voltar</button>
+        <h2>TUTORIAIS FINANCEIRO</h2>
+        <div className="card-container">
+        <div className="card">
+            <i className="fas fa-users"></i>
+            <h3>Setor Financeiro
+            </h3>
+            <p> Saiba tudo sobre o setor financeiro!</p>
+            <br></br>
+            <iframe width="210" height="210" src="https://www.youtube.com/embed/wYJDafyNoB0?si=Y_52jQy-rlhG1u-e" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
+          </div>
+          <div className="card">
+            <i className="fas fa-truck"></i>
+            <h3>Controle Financeiro na Logística
+            </h3>
+            <p>Entenda os processos, as tarefas e os objetivos!</p>
+            <br></br>
+            <iframe width="210" height="210" src="https://www.youtube.com/embed/pOTQxjSAW2k?si=3o1U5jsRZy7WQKIE" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+          </div>
+          <div className="card">
+            <i className="fas fa-chart-line"></i>
+            <h3>Setor financeiro: Qual a importância?
+            </h3>
+            <p>
+            Tudo o que Você Precisa Saber sobre a Importância do Setor Financeiro
+            </p>
+            <br></br>
+            <iframe width="210" height="210" src="https://www.youtube.com/embed/ASb-WE5cSfI?si=vmQMBTEos9Y4dGC8" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
+          </div>
+          </div>
+          <button onClick={handleVoltar}>Voltar</button>
+        
       </section>
       
     </div>

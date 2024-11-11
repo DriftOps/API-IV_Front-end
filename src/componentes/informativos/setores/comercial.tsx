@@ -55,7 +55,7 @@ const Comercial: React.FC = () => {
             <h3>Importancia do Setor Comercial</h3>
             <p>Conheça sobre como a sua função tem um papel importante na empresa!</p>
             <br></br>
-            <span>video</span>
+            <iframe width="210" height="210" src="https://www.youtube.com/embed/1Vl2D9IsNG0?si=ICLGwbsKcWk1Lc5m" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
           </div>
           <div className="card">
             <i className="fas fa-truck"></i>
@@ -63,15 +63,16 @@ const Comercial: React.FC = () => {
             </h3>
             <p>Entenda os processos, as tarefas e os objetivos!</p>
             <br></br>
-            <span>video</span>
+            <iframe width="210" height="210" src="https://www.youtube.com/embed/vb4sJofzf6s?si=jRKZW0SS9CODBk2J" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
           </div>
           <div className="card">
             <i className="fas fa-chart-line"></i>
-            <h3>Entenda o que é Logística
-            </h3>
-            <p>Significado, O Que Faz? 06 Dicas Práticas pra Trabalhá-la no Seu Negócio</p>
+            <h3>Gestão Comercial            </h3>
+            <p>
+            Tudo o que Você Precisa Saber sobre Gestão Comercial
+            </p>
             <br></br>
-            
+            <iframe width="210" height="210" src="https://www.youtube.com/embed/grpv0Gi0HCg?si=YcenjpFDxinJcE0y" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
           </div>
           </div>
           <button onClick={handleVoltar}>Voltar</button>

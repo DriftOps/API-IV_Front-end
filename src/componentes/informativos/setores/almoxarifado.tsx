@@ -49,7 +49,34 @@ const Almoxarifado: React.FC = () => {
           </div>
           
         </div>
-        <button onClick={handleVoltar}>Voltar</button>
+        <h2>TUTORIAIS ALMOXARIFADO</h2>
+        <div className="card-container">
+        <div className="card">
+            <i className="fas fa-users"></i>
+            <h3>O Que É Um Aumoxarifado? Como Funciona? Para Que Aerve?</h3>
+            <p>O que é um ALMOXARIFADO? Você sabe quais são suas características?</p>
+            <br></br>
+            <iframe width="210" height="210" src="https://www.youtube.com/embed/sK3YWLLew18?si=YBvZeywlrgYiX1xl" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
+          </div>
+          <div className="card">
+            <i className="fas fa-truck"></i>
+            <h3>7 Dicas para Uma Boa Gestão de Aumoxarifado
+            </h3>
+            <p>Entenda os processos, as tarefas e os objetivos para uma boa gestão de Aumoxarifado!</p>
+            <br></br>
+            <iframe width="210" height="210" src="https://www.youtube.com/embed/11S4u1DnUlk?si=9Xm4mbCU7uOlz1i3" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
+          </div>
+          <div className="card">
+            <i className="fas fa-chart-line"></i>
+            <h3>Estruturação do Aumoxarifado</h3>
+            <p>
+            Almoxarifado e Supply Chain: Um Guia Essencial para Gestão Eficiente de Estoques            </p>
+            <br></br>
+            <iframe width="210" height="210" src="https://www.youtube.com/embed/CBUfjwdPFD0?si=hdSIbNPedk02MfR2" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
+          </div>
+          </div>
+          <button onClick={handleVoltar}>Voltar</button>
+        
       </section>
     </div>
   );
