@@ -67,7 +67,7 @@ const Operacional: React.FC = () => {
             <iframe width="200" height="160" src="https://www.youtube.com/embed/JRBK_0UYz48?si=4Nw0w6z0t1WJ519N" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
           </div>
           <div className="card">
-            <i className="fas fa-coin"></i>
+            <i className="fas fa-chart-line"></i>
             <h3>Entenda o que é Logística
             </h3>
             <p>Significado, O Que Faz? 06 Dicas Práticas pra Trabalhá-la no Seu Negócio</p>

@@ -6,13 +6,13 @@ function PaginaDeChat() {
   const [mensagem, setMensagem] = useState('');
   const [arquivo, setArquivo] = useState(null); // Estado para armazenar o arquivo selecionado
   const [mensagensPorEquipe, setMensagensPorEquipe] = useState({
-    'Equipe A': [],
-    'Equipe B': [],
-    'Equipe C': [],
-    'Equipe D': [],
+    'Comercial': [],
+    'Operacional': [],
+    'Financeiro': [],
+    'Recursos Humanos': [],
   });
 
-  const equipes = ['Equipe A', 'Equipe B', 'Equipe C', 'Equipe D'];
+  const equipes = ['Comercial', 'Operacional', 'Financeiro', 'Recursos Humanos'];
 
   const selecionarEquipe = (equipe) => {
     setEquipeSelecionada(equipe);
@@ -63,7 +63,7 @@ function PaginaDeChat() {
         </ul>
       </div>
       <div className="areaDeChat">
-        <h2>{equipeSelecionada ? `Chat da ${equipeSelecionada}` : 'Selecione uma equipe'}</h2>
+        <h2>{equipeSelecionada ? `Chat do ${equipeSelecionada}` : 'Selecione uma equipe'}</h2>
 
         <div className="mensagens">
           {equipeSelecionada && mensagensPorEquipe[equipeSelecionada].map((msg, index) => (

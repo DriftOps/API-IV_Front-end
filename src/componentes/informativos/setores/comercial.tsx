@@ -66,7 +66,7 @@ const Comercial: React.FC = () => {
             <span>video</span>
           </div>
           <div className="card">
-            <i className="fas fa-coin"></i>
+            <i className="fas fa-chart-line"></i>
             <h3>Entenda o que é Logística
             </h3>
             <p>Significado, O Que Faz? 06 Dicas Práticas pra Trabalhá-la no Seu Negócio</p>

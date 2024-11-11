@@ -61,18 +61,18 @@ const Estatistica: React.FC = () => {
 
             <div className="graph-row">
                 <div className="graph-container">
-                    <h2>Departamento 1</h2>
+                    <h2>Comercial</h2>
                     <Pie data={pieData1} />
                 </div>
 
                 <div className="graph-container">
-                    <h2>Departamento 2</h2>
+                    <h2>Operacional</h2>
                     <Pie data={pieData2} />
                 </div>
             </div>
 
             <div className="graph-container">
-                <h2>Departamento 3</h2>
+                <h2>Financeiro</h2>
                 <Bar data={barData} />
             </div>
         </div>
