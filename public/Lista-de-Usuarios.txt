@@ -1,0 +1,5 @@
+{"id": "1", "nome": "João Silva", "cpf": "123.456.789-00", "tipoUsuario": "RH", "dataNascimento": "1990-01-01", "email": "joao.silva@empresa.com"}
+{"id": "2", "nome": "Maria Oliveira", "cpf": "987.654.321-00", "tipoUsuario": "Financeiro", "dataNascimento": "1992-05-10", "email": "maria.oliveira@empresa.com"}
+{"id": "3", "nome": "Carlos Souza", "cpf": "456.789.123-00", "tipoUsuario": "Operacional", "dataNascimento": "1993-07-15", "email": "carlos.souza@empresa.com"}
+{"id": "4", "nome": "Ana Costa", "cpf": "321.654.987-00", "tipoUsuario": "Comercial", "dataNascimento": "1991-11-20", "email": "ana.costa@empresa.com"}
+{"id": "5", "nome": "Lucas Pereira", "cpf": "789.123.456-00", "tipoUsuario": "TI", "dataNascimento": "1994-03-05", "email": "lucas.pereira@empresa.com"}
