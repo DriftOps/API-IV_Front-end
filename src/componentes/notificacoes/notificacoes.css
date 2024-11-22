@@ -134,3 +134,11 @@
   opacity: 1;
   pointer-events: auto;
 }
+
+.notif-empty {
+  text-align: center;
+  font-size: 18px;
+  color: #666666;
+  margin: 20px 0;
+}
+

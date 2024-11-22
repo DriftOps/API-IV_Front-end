@@ -5,21 +5,26 @@
   text-align: center;
   margin-top: 100px;
   display: flex;
-  flex-wrap: wrap; /* Permite quebra de linha */
-  justify-content: space-around; /* Espaço igual entre os cartões */
+  flex-wrap: wrap; 
+  justify-content: space-around;
 }
 
 .footer-card {
-  background-color: rgba(255, 255, 255, 0.1); /* Fundo leve */
-  border-radius: 8px; /* Bordas arredondadas */
-  padding: 15px; /* Espaçamento interno */
-  margin: 10px; /* Margem entre cartões */
-  flex: 1; /* Cada cartão ocupa espaço igual */
-  min-width: 200px; /* Largura mínima para cartões */
+  background-color: rgba(255, 255, 255, 0.1); 
+  border-radius: 8px;
+  padding: 15px; 
+  margin: 10px; 
+  flex: 1; 
+  min-width: 200px; 
 }
 
 .footer p {
+  color: #fff;
   margin: 5px 0;
+}
+
+.footer strong {
+  color: #fff;
 }
 
 .footer a {

@@ -66,6 +66,14 @@ export default class Notificações extends Component<{}, State> {
     this.setState({ isOpen: false });
   };
 
+  removeNotification = (id: Number) => {
+    this.setState((prevState) => ({
+      notifications: prevState.notifications.filter(
+        (notification) => notification.id !== id
+      ),
+    }));
+  };
+
   render() {
     const { isOpen, notifications } = this.state;
 
@@ -83,6 +91,8 @@ export default class Notificações extends Component<{}, State> {
           <div className={`notif-dropdown ${isOpen ? 'notif-open' : ''}`}>
             <div className="notif-dropdown-content">
               <h3>Notificações</h3>
+              <br/>
+              {notifications.length > 0 ? (
               <ul className="notif-list">
                 {notifications.map((notification) => (
                   <li className="notif-item" key={notification.id}>
@@ -101,6 +111,11 @@ export default class Notificações extends Component<{}, State> {
                           className={`notif-btn ${
                             button.type === 'primary' ? 'primary' : 'secondary'
                           }`}
+                          onClick={() =>  {
+                            if (button.type === 'secondary') {
+                              this.removeNotification(notification.id);
+                            }
+                          }} 
                         >
                           {button.text}
                         </button>
@@ -109,6 +124,9 @@ export default class Notificações extends Component<{}, State> {
                   </li>
                 ))}
               </ul>
+              ) : (
+                <p className='notif-empty'>Sem notificações até o momento.</p>
+              )}
             </div>
           </div>
         </nav>

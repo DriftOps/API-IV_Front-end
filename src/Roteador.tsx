@@ -51,7 +51,7 @@ const Roteador: React.FC = () => {
           element={<><NavTab /> <AdicionarUsuario onAdd={handleAddUsuario} /></>} 
         />
         <Route 
-          path="/ListarFuncionarios" 
+          path="/listagem" 
           element={<><NavTab /> <ListarUsuarios /> </>} 
         />
 
