@@ -47,8 +47,8 @@ const Roteador: React.FC = () => {
 
         {/* Rotas de usuários e funcionários */}
         <Route 
-          path="/AdicionarUsuario" 
-          element={<><NavTab /> <AdicionarUsuario onAdd={handleAddUsuario} /></>} 
+          path="/adicionarUsuario" 
+          element={<><NavTab /> <AdicionarUsuario /></>} 
         />
         <Route 
           path="/listagem" 
