@@ -75,7 +75,7 @@ export default class Sidebar extends Component<{}, State> {
                     <li className="list">
                       <a href="/AdicionarUsuario" className="nav-link">
                         <i className="bx bx-user"></i>
-                        <span className="link">Adicionar usuário</span>
+                        <span className="link">Adicionar Usuário</span>
                       </a>
                     </li>
 
@@ -91,31 +91,11 @@ export default class Sidebar extends Component<{}, State> {
                         <i className="bx bx-cog"></i>
                         <span className="link">Configurações</span>
                       </a>
-                    </li>
-                  </ul>
-
-                  <hr />
-
-                  <div className="bottom-content">
-                    <h5>Registro</h5>
-                    <ul className="lists">
-                      <li className="list">
-                        <a href="#" className="nav-link">
-                          <i className="bx bx-credit-card"></i>
-                          <span className="link">Detalhes de pagamento</span>
-                        </a>
-                      </li>
-                      <li className="list">
-                        <a href="#" className="nav-link">
-                          <i className="bx bx-spreadsheet"></i>
-                          <span className="link">Relatório</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </>
           )}
         </nav>
         <div className={`overlay ${isOpen ? 'active' : ''}`} onClick={this.closeMenu}></div>

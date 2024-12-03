@@ -74,6 +74,7 @@ const AdicionarUsuario: React.FC<AdicionarUsuarioProps> = ({ onAdd, onDelete, on
 
   const handleEnviarEmail = () => {
     console.log('Email de redefinição de senha enviado para:', formData.email);
+    alert(`Email de redefinição de senha enviado para: ${formData.email}`);
   };
 
   return (
@@ -142,21 +143,12 @@ const AdicionarUsuario: React.FC<AdicionarUsuarioProps> = ({ onAdd, onDelete, on
           <div className="email-mask">
             <input
               type="text"
-              name="email"
               value={formData.email.split('@')[0]} // Parte antes do @
               onChange={(e) => setFormData({ ...formData, email: e.target.value + '@' + formData.email.split('@')[1] })}
               placeholder="exemplo"
               required
             />
             <span>@</span>
-            <input
-              type="text"
-              name="email"
-              value={formData.email.split('@')[1] || ''} // Parte após o @
-              onChange={(e) => setFormData({ ...formData, email: formData.email.split('@')[0] + '@' + e.target.value })}
-              placeholder="gmail.com"
-              required
-            />
             <select value={formData.email.split('@')[1] || ''} onChange={handleEmailDomainChange}>
               <option value="">Selecione o domínio</option>
               {emailDomains.map((domain) => (
