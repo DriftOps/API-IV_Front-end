@@ -1,79 +1,76 @@
 import React from 'react';
-import { Pie, Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, BarElement, Tooltip, Legend, CategoryScale, LinearScale } from 'chart.js';
 import './Estatistica.css';
 
-
-ChartJS.register(ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
+ChartJS.register(BarElement, Tooltip, Legend, CategoryScale, LinearScale);
 
 const Estatistica: React.FC = () => {
-    const pieData1 = {
-        labels: ['Parte 1', 'Parte 2', 'Parte 3', 'Parte 4', 'Parte 5'],
+    // Dados individuais para cada setor
+    const dataComercial = {
+        labels: ['Trim1', 'Trim2', 'Trim3', 'Trim4'],
         datasets: [
             {
-                label: 'Distribuição 1',
-                data: [20, 30, 25, 15, 10],
-                backgroundColor: [
-                    '#FF6384',
-                    '#36A2EB',
-                    '#FFCE56',
-                    '#4BC0C0',
-                    '#9966FF',
-                ],
-                borderWidth: 1,
+                label: 'Comercial',
+                data: [120000, 140000, 130000, 150000],
+                backgroundColor: '#FF6384',
             },
         ],
     };
 
-    const pieData2 = {
-        labels: ['A', 'B', 'C', 'D', 'E'],
+    const dataOperacional = {
+        labels: ['Trim1', 'Trim2', 'Trim3', 'Trim4'],
         datasets: [
             {
-                label: 'Distribuição 2',
-                data: [10, 20, 15, 25, 30],
-                backgroundColor: [
-                    '#FF6384',
-                    '#36A2EB',
-                    '#FFCE56',
-                    '#4BC0C0',
-                    '#9966FF',
-                ],
-                borderWidth: 1,
-            },
-        ],
-    };
-
-    const barData = {
-        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'],
-        datasets: [
-            {
-                label: 'Gráfico de Barras',
-                data: [12, 19, 3, 5, 2],
+                label: 'Operacional',
+                data: [100000, 110000, 120000, 115000],
                 backgroundColor: '#4BC0C0',
+            },
+        ],
+    };
+
+    const dataFinanceiro = {
+        labels: ['Trim1', 'Trim2', 'Trim3', 'Trim4'],
+        datasets: [
+            {
+                label: 'Financeiro',
+                data: [80000, 95000, 90000, 100000],
+                backgroundColor: '#FF9F40',
+            },
+        ],
+    };
+
+    const dataRH = {
+        labels: ['Trim1', 'Trim2', 'Trim3', 'Trim4'],
+        datasets: [
+            {
+                label: 'Recursos Humanos',
+                data: [60000, 70000, 75000, 72000],
+                backgroundColor: '#9966FF',
             },
         ],
     };
 
     return (
         <div>
-            <h1>Página de Estatísticas</h1>
-            <p>Aqui estão suas estatísticas:</p>
-
+            <h1 className="page-title">Quantidade de Tarefas Completas:</h1>
             <div className="graph-row">
                 <div className="graph-container">
                     <h2>Comercial</h2>
-                    <Pie data={pieData1} />
+                    <Bar data={dataComercial} />
                 </div>
-
                 <div className="graph-container">
                     <h2>Operacional</h2>
-                    <Pie data={pieData2} />
+                    <Bar data={dataOperacional} />
                 </div>
-            </div>
-
-            <div className="graph-container">
-                <h2>Financeiro</h2>
-                <Bar data={barData} />
+                <div className="graph-container">
+                    <h2>Financeiro</h2>
+                    <Bar data={dataFinanceiro} />
+                </div>
+                <div className="graph-container">
+                    <h2>Recursos Humanos</h2>
+                    <Bar data={dataRH} />
+                </div>
             </div>
         </div>
     );
