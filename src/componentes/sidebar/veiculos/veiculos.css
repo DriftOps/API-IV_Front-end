@@ -1,68 +1,71 @@
 /* Veiculos.css */
 .veiculo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Ocupar 100% da altura da tela */
-    padding: 20px;
-    background-color: #f4f4f4;
-  }
-  
-  .veiculo-form-wrapper {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px; /* Limita a largura do formulário */
-  }
-  
-  .veiculo-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .veiculo-form h2 {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .veiculo-form label {
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .veiculo-form input {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .veiculo-form button {
-    padding: 10px;
-    background-color: #0a4c71;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .veiculo-form button:hover {
-    background-color: #08405b;
-  }
-  
-  @media (max-width: 768px) {
-    .veiculo-form-wrapper {
-      padding: 20px;
-      max-width: 80%;
-    }
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ocupar 100% da altura da tela */
+  padding: 20px;
+  background-color: #f4f4f4;
+}
 
-  .button-container {
-    display: flex;
-    gap: 10px; 
-    margin-top: 20px; 
+.veiculo-form-wrapper {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px; /* Limita a largura do formulário */
+}
+
+.veiculo-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.veiculo-form h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.veiculo-form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.veiculo-form input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.veiculo-form button {
+  padding: 10px;
+  background-color: #0a4c71;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.veiculo-form button:hover {
+  background-color: #08405b;
+}
+
+@media (max-width: 768px) {
+  .veiculo-form-wrapper {
+    padding: 20px;
+    max-width: 80%;
   }
+}
+
+/* Centraliza os botões "Salvar" e "Voltar" */
+.button-container {
+  display: flex;
+  justify-content: center; /* Centraliza os botões horizontalmente */
+  gap: 10px; 
+  margin-top: 20px; 
+  width: 100%;
+}

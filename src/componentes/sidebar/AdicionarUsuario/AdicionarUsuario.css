@@ -1,137 +1,63 @@
 .adicionar-usuario-container {
-  max-width: 600px;
-  margin: 20px auto;
+  max-width: 500px;
+  margin: 0 auto;
   padding: 20px;
-  background-color: #f9f9f9;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.title {
+.titulo {
   text-align: center;
-  color: #0a4c71;
+  font-size: 24px;
+  color: #333;
   margin-bottom: 20px;
 }
 
-.adicionar-usuario-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.form-group {
+.formulario {
   display: flex;
   flex-direction: column;
 }
 
-.form-group label {
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  font-weight: bold;
   margin-bottom: 5px;
-  color: #333;
+  display: block;
+  color: #555;
 }
 
-.form-group input,
-.form-group select {
+.input {
+  width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 14px;
 }
 
-.email-mask {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-
-.email-mask input {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  width: 30%; /* Ajuste o tamanho para que o e-mail e domínio fiquem lado a lado */
-}
-
-.email-mask span {
-  padding: 10px;
-  background-color: #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.email-mask select {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.button-group {
-  display: flex;
-  flex-wrap: wrap; /* Para que os botões se ajustem em múltiplas linhas quando necessário */
-  gap: 10px;
-  justify-content: space-between; /* Para garantir o espaçamento adequado entre os botões */
-}
-
-.add-user-button,
-.deletar-usuario,
-.enviar-email,
-.ListarFuncionarios {
-  width: 48%; /* O tamanho é 48% para ocupar duas colunas na linha */
-  padding: 10px;
-  background-color: #0a4c71; /* Cor igual ao botão de deletar */
-  color: white;
+.botao-adicionar, .botao-listar {
+  margin-top: 10px;
+  padding: 10px 15px;
+  font-size: 14px;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
-  text-align: center;
 }
 
-.add-user-button:hover,
-.deletar-usuario:hover,
-.enviar-email:hover,
-.ListarFuncionarios:hover {
-  background-color: #0056b3;
+.botao-adicionar {
+  background-color: #4CAF50;
+  color: white;
 }
 
-.deletar-usuario {
-  background-color: #d9534f; /* Cor específica para o botão de deletar */
+.botao-listar {
+  background-color: #007BFF;
+  color: white;
 }
 
-.deletar-usuario:hover {
-  background-color: #c9302c;
-}
-
-@media (max-width: 768px) {
-  .adicionar-usuario-container {
-    padding: 15px;
-  }
-
-  .form-group input,
-  .form-group select {
-    font-size: 14px;
-  }
-
-  .button-group {
-    flex-direction: column;
-  }
-
-  .add-user-button,
-  .deletar-usuario,
-  .enviar-email,
-  .ListarFuncionarios {
-    width: 100%; /* Os botões ocupam 100% da largura em telas pequenas */
-  }
-
-  .email-mask {
-    flex-direction: column;
-  }
-
-  .email-mask input {
-    width: 100%;
-  }
-
-  .email-mask span {
-    width: 100%;
-    text-align: center;
-  }
+.botao-adicionar:hover, .botao-listar:hover {
+  opacity: 0.9;
 }

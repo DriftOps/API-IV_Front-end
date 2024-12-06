@@ -1,20 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ListaVeiculos.css';
 
 const ListaVeiculos = () => {
   const navigate = useNavigate();
+  const [veiculos, setVeiculos] = useState([]);
 
-  // Simulando uma lista de veículos
-  const veiculos = [
-    { id: 1, marca: 'Toyota', modelo: 'Corolla', ano: 2020, placa: 'ABC-1234' },
-    { id: 2, marca: 'Honda', modelo: 'Civic', ano: 2019, placa: 'XYZ-5678' },
-    { id: 3, marca: 'Ford', modelo: 'Fiesta', ano: 2018, placa: 'QWE-9012' }
-  ];
+  useEffect(() => {
+    // Recupera a lista de veículos armazenada no localStorage ou inicializa com os dados fictícios
+    const veiculosFicticios = [
+      { id: 1, marca: 'Toyota', modelo: 'Corolla', ano: 2020, placa: 'ABC-1234' },
+      { id: 2, marca: 'Honda', modelo: 'Civic', ano: 2019, placa: 'XYZ-5678' },
+      { id: 3, marca: 'Ford', modelo: 'Fiesta', ano: 2018, placa: 'QWE-9012' }
+    ];
 
-  const handleEditar = (id: number) => {
-    // Redireciona para a página de edição do veículo
-    navigate(`/veiculos/${id}`);
+    // Verifica se já existem veículos no localStorage, senão, usa os fictícios
+    const veiculosSalvos = JSON.parse(localStorage.getItem('veiculos')) || veiculosFicticios;
+    setVeiculos(veiculosSalvos);
+  }, []);
+
+  const handleEditar = (index) => {
+    // Redireciona para a página de edição do veículo com base no índice
+    navigate(`/veiculos/${index}`);
+  };
+
+  const handleExcluir = (index) => {
+    // Remove o veículo do array usando o índice
+    const veiculosAtualizados = veiculos.filter((_, i) => i !== index);
+
+    // Atualiza o localStorage
+    localStorage.setItem('veiculos', JSON.stringify(veiculosAtualizados));
+
+    // Atualiza o estado local para refletir a exclusão
+    setVeiculos(veiculosAtualizados);
   };
 
   const handleAdicionarNovo = () => {
@@ -40,14 +58,15 @@ const ListaVeiculos = () => {
           </tr>
         </thead>
         <tbody>
-          {veiculos.map(veiculo => (
-            <tr key={veiculo.id}>
+          {veiculos.map((veiculo, index) => (
+            <tr key={index}>
               <td>{veiculo.marca}</td>
               <td>{veiculo.modelo}</td>
               <td>{veiculo.ano}</td>
               <td>{veiculo.placa}</td>
               <td>
-                <button onClick={() => handleEditar(veiculo.id)}>Editar</button>
+                <button onClick={() => handleEditar(index)}>Editar</button>
+                <button onClick={() => handleExcluir(index)}>Excluir</button>
               </td>
             </tr>
           ))}

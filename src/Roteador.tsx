@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { FuncionarioProvider } from './componentes/sidebar/AdicionarUsuario/FuncionarioContext';
 
@@ -24,42 +24,18 @@ import RecursosHumanos from './componentes/informativos/setores/recursos-humanos
 import Comercial from './componentes/informativos/setores/comercial';
 import Profile from './componentes/profile/Perfil';
 import ListarUsuarios from './componentes/sidebar/AdicionarUsuario/ListarUsuarios';
-
-interface Funcionario {
-  id: string;
-  nome: string;
-  cpf: string;
-  setor: string;
-  dataNascimento: string;
-  email: string;
-}
+import EditarFuncionario from './componentes/sidebar/AdicionarUsuario/EditarFuncionario';
 
 const Roteador: React.FC = () => {
-  const [funcionarios, setFuncionarios] = useState<Funcionario[]>([]);
-
-  const handleAddFuncionario = (funcionario: Funcionario) => {
-    setFuncionarios((prev) => [...prev, funcionario]);
-  };
-
-  const handleDeleteFuncionario = (id: string) => {
-    setFuncionarios((prev) => prev.filter((funcionario) => funcionario.id !== id));
-  };
-
-  const handleListFuncionarios = () => {
-    console.log('Funcionários cadastrados:', funcionarios);
-  };
-
   const routes = [
     { path: "/", element: <Login /> },
     { path: "/login", element: <Login /> },
     { path: "/principal", element: <><NavTab /> <Principal /></> },
-    { path: "/adicionarUsuario", element: <><NavTab /> <AdicionarUsuario 
-      onAdd={handleAddFuncionario} 
-      onDelete={handleDeleteFuncionario} 
-      onList={handleListFuncionarios}/> </> },
-    { path: "/listagem", element: <><NavTab /> <ListarUsuarios/></> },
+    { path: "/adicionarUsuario", element: <><NavTab /> <AdicionarUsuario /> </> },
+    { path: "/listagem", element: <><NavTab /> <ListarUsuarios /></> },
+    { path: "/editar/:id", element: <><NavTab /> <EditarFuncionario /></> },
     { path: "/veiculos", element: <><NavTab /> <ListaVeiculos /></> },
-    { path: "/veiculos/:id", element: <><NavTab /> <Veiculos /></> },
+    { path: "/veiculos/:index", element: <><NavTab /> <Veiculos /></> },
     { path: "/veiculos/novo", element: <><NavTab /> <AdicionarVeiculo /></> },
     { path: "/Configuracao", element: <><NavTab /> <Configuracao /></> },
     { path: "/Estatistica", element: <><NavTab /> <Estatistica /></> },

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './veiculos.css';
 
 const Veiculos = () => {
-  const { id } = useParams<{ id: string }>(); // Pegando o ID da URL
+  const { index } = useParams(); // Pegando o índice da URL
   const [veiculo, setVeiculo] = useState({
     marca: '',
     modelo: '',
@@ -12,19 +11,21 @@ const Veiculos = () => {
     placa: ''
   });
 
-  useEffect(() => {
-    // Simulando uma busca de dados do veículo pelo ID (aqui você pode buscar do backend)
-    const veiculosMock = [
-      { id: '1', marca: 'Toyota', modelo: 'Corolla', ano: '2020', placa: 'ABC-1234' },
-      { id: '2', marca: 'Honda', modelo: 'Civic', ano: '2019', placa: 'XYZ-5678' },
-      { id: '3', marca: 'Ford', modelo: 'Fiesta', ano: '2018', placa: 'QWE-9012' }
-    ];
+  const [veiculos, setVeiculos] = useState<any[]>([]); // Estado para armazenar os veículos
 
-    const veiculoSelecionado = veiculosMock.find(v => v.id === id);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Recupera os veículos armazenados no localStorage
+    const veiculosSalvos = JSON.parse(localStorage.getItem('veiculos')) || [];
+    setVeiculos(veiculosSalvos);
+
+    // Converte o índice de string para número e encontra o veículo
+    const veiculoSelecionado = veiculosSalvos[parseInt(index, 10)];
     if (veiculoSelecionado) {
       setVeiculo(veiculoSelecionado);
     }
-  }, [id]);
+  }, [index]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setVeiculo({
@@ -35,16 +36,24 @@ const Veiculos = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Veículo editado:', veiculo);
-    // Adicione a lógica para salvar os dados
-  };
 
-  const navigate = useNavigate();
+    // Atualiza o veículo na lista com base no índice
+    const veiculosAtualizados = [...veiculos];
+    veiculosAtualizados[parseInt(index, 10)] = { ...veiculo }; // Atualiza o veículo pelo índice
+
+    // Atualiza no localStorage
+    localStorage.setItem('veiculos', JSON.stringify(veiculosAtualizados));
+
+    // Atualiza o estado local
+    setVeiculos(veiculosAtualizados);
+
+    // Redireciona de volta para a página de listagem de veículos
+    navigate('/veiculos');  // Redireciona para a lista de veículos após salvar
+  };
 
   const handleVoltar = () => {
-    navigate(-1);
+    navigate('/veiculos'); // Caso o usuário clique no "Voltar", redireciona para a lista de veículos
   };
-
 
   return (
     <div className="veiculo-container">
@@ -93,7 +102,7 @@ const Veiculos = () => {
           </div>
           <div className="button-container">
             <button type="submit">Salvar</button>
-            <button onClick={handleVoltar}>Voltar</button>
+            <button type="button" onClick={handleVoltar}>Voltar</button>
           </div>
         </form>
       </div>

@@ -1,124 +1,73 @@
 import React, { useState } from 'react';
+import { useFuncionario } from './FuncionarioContext';
+import { useNavigate } from 'react-router-dom';
 import InputMask from 'react-input-mask';
 import './AdicionarUsuario.css';
 
-interface Funcionario {
-  id: string;
-  nome: string;
-  cpf: string;
-  setor: string;
-  dataNascimento: string;
-  email: string;
-}
-
-interface AdicionarUsuarioProps {
-  onAdd: (funcionario: Funcionario) => void;
-  onDelete: (id: string) => void;
-  onList: () => void; // Função para listar os funcionários cadastrados
-}
-
-const AdicionarUsuario: React.FC<AdicionarUsuarioProps> = ({ onAdd, onDelete, onList }) => {
-  const [formData, setFormData] = useState<Funcionario>({
-    id: Math.random().toString(36).substring(2, 9).toUpperCase(),
+const AdicionarUsuario: React.FC = () => {
+  const { addFuncionario } = useFuncionario();
+  const [formData, setFormData] = useState({
     nome: '',
     cpf: '',
-    setor: '',
+    setor: 'Administrador', // Valor padrão
     dataNascimento: '',
     email: '',
   });
+  const navigate = useNavigate();
 
-  const [ultimoFuncionario, setUltimoFuncionario] = useState<Funcionario | null>(null);
-
-  const emailDomains = ['gmail.com', 'hotmail.com', 'yahoo.com', 'outlook.com'];
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleEmailDomainChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const domain = e.target.value;
-    setFormData((prev) => ({ ...prev, email: prev.email.split('@')[0] + '@' + domain }));
+  // Função para gerar ID único
+  const generateUniqueId = () => {
+    return `ID-${Math.floor(Math.random() * 1000000)}`;
   };
 
   const handleAddFuncionario = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      alert('Por favor, insira um e-mail válido.');
+    if (!formData.nome || !formData.cpf) {
+      alert('Preencha todos os campos obrigatórios!');
       return;
     }
 
-    setUltimoFuncionario(formData);
-    onAdd(formData);
+    const newFuncionario = {
+      ...formData,
+      id: generateUniqueId(),
+    };
 
+    addFuncionario(newFuncionario);
     alert('Funcionário adicionado com sucesso!');
-
-    setFormData({
-      id: Math.random().toString(36).substring(2, 9).toUpperCase(),
-      nome: '',
-      cpf: '',
-      setor: '',
-      dataNascimento: '',
-      email: '',
-    });
-  };
-
-  const handleDeleteFuncionario = (id: string) => {
-    if (window.confirm('Tem certeza que deseja deletar este funcionário?')) {
-      onDelete(id);
-      alert('Funcionário deletado com sucesso!');
-    }
-  };
-
-  const handleEnviarEmail = () => {
-    console.log('Email de redefinição de senha enviado para:', formData.email);
-    alert(`Email de redefinição de senha enviado para: ${formData.email}`);
+    setFormData({ nome: '', cpf: '', setor: 'Administrador', dataNascimento: '', email: '' });
+    navigate('/listagem'); // Redireciona para a lista de funcionários
   };
 
   return (
     <div className="adicionar-usuario-container">
-      <h2 className="title">Adicionar Funcionário</h2>
-      <form className="adicionar-usuario-form" onSubmit={handleAddFuncionario}>
-        <div className="form-group">
-          <label>ID</label>
-          <input type="text" value={formData.id} disabled />
-        </div>
-
-        <div className="form-group">
-          <label>Nome Completo</label>
+      <h1 className="titulo">Adicionar Usuário</h1>
+      <form onSubmit={handleAddFuncionario} className="formulario">
+        <div className="input-group">
+          <label>Nome:</label>
           <input
             type="text"
-            name="nome"
             value={formData.nome}
-            onChange={handleChange}
-            placeholder="Ex: João Silva"
-            required
+            onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
+            className="input"
           />
         </div>
-
-        <div className="form-group">
-          <label>CPF</label>
+        <div className="input-group">
+          <label>CPF:</label>
           <InputMask
             mask="999.999.999-99"
-            name="cpf"
             value={formData.cpf}
-            onChange={handleChange}
-            required
-            placeholder="000.000.000-00"
+            onChange={(e) => setFormData({ ...formData, cpf: e.target.value })}
+            className="input"
           />
         </div>
-
-        <div className="form-group">
-          <label>Setor</label>
+        <div className="input-group">
+          <label>Setor:</label>
           <select
-            name="setor"
             value={formData.setor}
-            onChange={handleChange}
-            required
+            onChange={(e) => setFormData({ ...formData, setor: e.target.value })}
+            className="input"
           >
-            <option value="">Selecione o setor</option>
             <option value="Administrador">Administrador</option>
             <option value="Operacional">Operacional</option>
             <option value="Financeiro">Financeiro</option>
@@ -126,63 +75,29 @@ const AdicionarUsuario: React.FC<AdicionarUsuarioProps> = ({ onAdd, onDelete, on
             <option value="Almoxarifado">Almoxarifado</option>
           </select>
         </div>
-
-        <div className="form-group">
-          <label>Data de Nascimento</label>
+        <div className="input-group">
+          <label>Data de Nascimento:</label>
           <input
             type="date"
-            name="dataNascimento"
             value={formData.dataNascimento}
-            onChange={handleChange}
-            required
+            onChange={(e) => setFormData({ ...formData, dataNascimento: e.target.value })}
+            className="input"
           />
         </div>
-
-        <div className="form-group">
-          <label>Email</label>
-          <div className="email-mask">
-            <input
-              type="text"
-              value={formData.email.split('@')[0]} // Parte antes do @
-              onChange={(e) => setFormData({ ...formData, email: e.target.value + '@' + formData.email.split('@')[1] })}
-              placeholder="exemplo"
-              required
-            />
-            <span>@</span>
-            <select value={formData.email.split('@')[1] || ''} onChange={handleEmailDomainChange}>
-              <option value="">Selecione o domínio</option>
-              {emailDomains.map((domain) => (
-                <option key={domain} value={domain}>{domain}</option>
-              ))}
-            </select>
-          </div>
+        <div className="input-group">
+          <label>Email:</label>
+          <input
+            type="email"
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            className="input"
+          />
         </div>
-
-        <div className="button-group">
-          <button type="submit" className="add-user-button">
-            Adicionar Funcionário
-          </button>
-          <button type="button" className="enviar-email" onClick={handleEnviarEmail}>
-            Enviar Email de Redefinição de Senha
-          </button>
-          <button type="button" className="ListarFuncionarios" onClick={onList}>
-            Listar Funcionários Cadastrados
-          </button>
-          <button type="button" className="deletar-usuario" onClick={() => handleDeleteFuncionario(formData.id)}>
-            Deletar Funcionário
-          </button>
-        </div>
+        <button type="submit" className="botao-adicionar">Adicionar Funcionário</button>
+        <button type="button" className="botao-listar" onClick={() => navigate('/listagem')}>
+          Listar Funcionários
+        </button>
       </form>
-
-      {ultimoFuncionario && (
-        <div className="ultimo-funcionario">
-          <h3>Último Funcionário Adicionado</h3>
-          <p>
-            <strong>{ultimoFuncionario.nome}</strong> - {ultimoFuncionario.setor} -{' '}
-            {ultimoFuncionario.email}
-          </p>
-        </div>
-      )}
     </div>
   );
 };

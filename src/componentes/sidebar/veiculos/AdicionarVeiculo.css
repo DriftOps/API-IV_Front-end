@@ -1,67 +1,132 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f9fb;
+  margin: 0;
+  padding: 0;
+}
+
 .form-adicionar-container {
-  padding: 20px;
-  max-width: 500px;
+  padding: 40px;
+  max-width: 600px;
   margin: 50px auto;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   text-align: center;
+  position: relative; /* Necessário para o botão de editar */
 }
 
 h2 {
-  text-align: center;
-  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 30px;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   text-align: left;
+  font-size: 16px;
+  color: #333;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.input-container {
+  position: relative;
 }
 
 .form-group input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  padding: 12px 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #0a4c71;
+  outline: none;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
 }
 
 button {
-  display: relative;
-  width: 40%;
-  padding: 10px;
+  width: 48%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-salvar {
   background-color: #0a4c71;
   color: white;
   border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
 }
 
-button:hover {
-  background-color: #f80000;
+.btn-salvar:hover {
+  background-color: #083c4a;
 }
 
 .btn-voltar {
-  position: absolute; /* Faz o botão ficar posicionado em relação ao pai */
-  top: 120px; /* Distância do topo da tela */
-  left: 500px;
-  width: 35px;
-  height: 35px;
-  background: none;
-  border: 2px solid #08405b;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 18px;
+  background-color: #f0f0f0;
+  border: 2px solid #0a4c71;
   color: #0a4c71;
-  padding: 0px;
-  transition: background-color 0.3s, color 0.3s; /* Adiciona transição suave */
 }
 
 .btn-voltar:hover {
-  color: #08405b;
+  background-color: #0a4c71;
+  color: white;
+}
+
+.btn-voltar img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Estilizando o botão de editar */
+.btn-editar {
+  position: absolute;
+  top: 20px; /* Distância do topo do container */
+  right: 20px; /* Distância da borda direita */
+  padding: 10px 20px;
+  background-color: #ff9900;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-editar:hover {
+  background-color: #e68900;
+}
+
+@media (max-width: 600px) {
+  .form-adicionar-container {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
 }

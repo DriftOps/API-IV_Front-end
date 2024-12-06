@@ -45,58 +45,35 @@ const Processos: React.FC = () => {
       ],
     },
     {
-      id: '54321',
+      id: '67890',
       events: [
         {
-          status: 'Recebido',
-          sector: 'Logística', // Adicione o setor conforme necessário
-          location: 'Lisboa, Portugal',
-          date: '15 Dez 2022 08:10:05',
-          details: 'Documentos processados na aduana de Lisboa e autorização de importação concedida.',
-          responsavel: 'Joana Pereira',
-          outrasInformacoes: 'Recebimento e processamento de documentos',
+          status: 'Recebimento',
+          sector: 'Logística',
+          location: 'Rio de Janeiro, Brasil',
+          date: '15 Out 2022 09:05:00',
+          details: 'Produto chegou à unidade de recebimento e foi inspecionado.',
+          responsavel: 'Gustavo Lima',
+          outrasInformacoes: 'Inspeção de qualidade realizada.',
         },
         {
-          status: 'Processado',
-          sector: 'Logística', // Adicione o setor conforme necessário
-          location: 'Madrid, Espanha',
-          date: '15 Dez 2022 08:15:00',
-          details: 'Os itens foram processados no centro logístico de Madrid e estão prontos para transporte interno.',
-          responsavel: 'Pedro Alonso',
-          outrasInformacoes: 'Processamento dos itens no centro logístico',
+          status: 'Em Transito',
+          sector: 'Logística',
+          location: 'Minas Gerais, Brasil',
+          date: '16 Out 2022 10:30:00',
+          details: 'O pacote segue para o próximo ponto de distribuição.',
+          responsavel: 'Juliana Costa',
+          outrasInformacoes: 'Aguardando despacho.',
         },
       ],
     },
-    {
-      id: '09879',
-      events: [
-        {
-          status: 'Operacional',
-          sector: 'Tecnologia', // Adicione o setor conforme necessário
-          location: 'Cibitung, Jakarta, Indonésia',
-          date: '16 Nov 2021 18:10:05',
-          details: 'O sistema operacional foi atualizado com sucesso e os testes de rede foram concluídos.',
-          responsavel: 'João Da Silva',
-          outrasInformacoes: 'Atualização do sistema',
-        },
-        {
-          status: 'Comercial',
-          sector: 'Financeiro', // Adicione o setor conforme necessário
-          location: 'Karawang, Indonésia',
-          date: '16 Nov 2021 16:23:05',
-          details: 'A equipe comercial aprovou os relatórios financeiros do último trimestre.',
-          responsavel: 'Livia Andrade',
-          outrasInformacoes: 'Aprovação dos relatórios financeiros',
-        },
-      ],
-    },
-    // Outros processos...
   ]);
 
   const [selectedProcesso, setSelectedProcesso] = useState<string | null>(null);
   const [isCadastroOpen, setIsCadastroOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [openDetails, setOpenDetails] = useState<{ [key: string]: number | null }>({});
+  const [newEventStatus, setNewEventStatus] = useState<string>('Produto recebido'); // Título fixo para a nova etapa
 
   const handleSelectOrder = (orderId: string) => {
     setSelectedProcesso(orderId);
@@ -121,28 +98,54 @@ const Processos: React.FC = () => {
     }));
   };
 
+  // Função para adicionar uma nova etapa com setor e responsável da etapa anterior
+  const addNewEvent = (processoId: string) => {
+    const processo = processos.find((p) => p.id === processoId);
+    if (processo && processo.events.length > 0) {
+      const lastEvent = processo.events[processo.events.length - 1];
+
+      const novoEvento: Event = {
+        status: newEventStatus,
+        sector: lastEvent.sector, // Copiar o setor da última etapa
+        location: 'Nova Localização',
+        date: new Date().toLocaleString(),
+        details: 'Detalhes da nova etapa',
+        responsavel: lastEvent.responsavel, // Copiar o responsável da última etapa
+        outrasInformacoes: 'Informações adicionais',
+      };
+
+      setProcessos((prevProcessos) =>
+        prevProcessos.map((processo) =>
+          processo.id === processoId
+            ? { ...processo, events: [...processo.events, novoEvento] }
+            : processo
+        )
+      );
+    }
+  };
+
   return (
     <div className="container">
       <div className="header">
-        <OrderDropdown 
-          orders={filteredProcessos.map(({ id }) => ({ id, name: `Processo ${id}` }))} 
-          onSelectOrder={handleSelectOrder} 
+        <OrderDropdown
+          orders={filteredProcessos.map(({ id }) => ({ id, name: `Processo ${id}` }))}
+          onSelectOrder={handleSelectOrder}
         />
         <button className="cadastro-button" onClick={handleCadastroClick}>
           Cadastro +
         </button>
       </div>
 
-      <input 
-        type="search" 
-        className="search-input" 
-        value={searchQuery} 
-        onChange={(e) => setSearchQuery(e.target.value)} 
-        placeholder="Pesquisar processo" 
+      <input
+        type="search"
+        className="search-input"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        placeholder="Pesquisar processo"
       />
 
-      {selectedProcesso && filteredProcessos.find(p => p.id === selectedProcesso) ? (
-        <OrderTimeline events={filteredProcessos.find(p => p.id === selectedProcesso)!.events} />
+      {selectedProcesso && filteredProcessos.find((p) => p.id === selectedProcesso) ? (
+        <OrderTimeline events={filteredProcessos.find((p) => p.id === selectedProcesso)!.events} />
       ) : (
         <p>Selecione um processo ou faça uma pesquisa.</p>
       )}
@@ -159,7 +162,7 @@ const Processos: React.FC = () => {
           <h3 className="processo-title">{processo.id}</h3>
           {processo.events.map((event, index) => (
             <div key={index} className="event-item">
-              <h4 className={`event-status ${index === processo.events.length - 1 ? 'completed' : ''}`}>
+              <h4 className={`event-status ${index < processo.events.length - 1 ? 'completed' : ''}`}>
                 {event.status}
               </h4>
               <p className="event-info">
@@ -179,8 +182,21 @@ const Processos: React.FC = () => {
                   <p><strong>Outras informações:</strong> {event.outrasInformacoes}</p>
                 </div>
               )}
+
+              {/* Bolinha indicando o status */}
+              <div
+                className={`event-ball ${index < processo.events.length - 1 ? 'completed-ball' : ''}`}
+              ></div>
             </div>
           ))}
+
+          {/* Botão para adicionar nova etapa */}
+          <button
+            onClick={() => addNewEvent(processo.id)}
+            className="add-event-button"
+          >
+            Adicionar Etapa
+          </button>
         </div>
       ))}
     </div>

@@ -2,13 +2,24 @@
   padding: 20px;
   background-color: #f4f4f4;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header-lista {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  max-width: 900px;
   margin-bottom: 20px;
+}
+
+.header-lista h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .btn-novo {
@@ -21,7 +32,7 @@
   border-radius: 5px;
   width: 150px;
   text-align: center;
-  margin: 10px auto;
+  transition: background-color 0.3s ease;
 }
 
 .btn-novo:hover {
@@ -39,7 +50,7 @@
 .veiculos-table th, .veiculos-table td {
   padding: 10px;
   border: 1px solid #ddd;
-  text-align: left;
+  text-align: center;
 }
 
 .veiculos-table th {
@@ -47,8 +58,22 @@
   color: #fff;
 }
 
+.veiculos-table button {
+  margin-right: 10px;
+}
+
 .veiculos-table tr:nth-child(even) {
   background-color: #f9f9f9;
+}
+
+.veiculos-table .btn-editar {
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
 .veiculos-table button {
@@ -57,6 +82,9 @@
   padding: 5px 10px;
   border: none;
   cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
 .veiculos-table button:hover {
@@ -68,6 +96,10 @@
   .header-lista {
       flex-direction: column;
       align-items: flex-start;
+  }
+
+  .header-lista h2 {
+      margin-bottom: 10px;
   }
 
   .btn-novo {

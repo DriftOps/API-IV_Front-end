@@ -1,0 +1,51 @@
+.editar-funcionario-container {
+  width: 100%;
+  max-width: 500px; /* Diminui a largura do formulário */
+  margin: 0 auto;
+  padding: 15px; /* Reduz o padding */
+}
+
+.titulo {
+  font-size: 20px; /* Reduz o tamanho da fonte */
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.formulario-editar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espaço mais compacto entre os campos */
+}
+
+.input-group {
+  margin-bottom: 10px; /* Diminui o espaçamento entre os campos */
+}
+
+.input-group label {
+  font-size: 12px; /* Reduz o tamanho da fonte do rótulo */
+  font-weight: bold;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 8px; /* Diminui o padding do campo */
+  font-size: 14px; /* Diminui o tamanho da fonte dos inputs */
+  border-radius: 4px; /* Bordas mais suaves */
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+.botao-editar {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 15px; /* Reduz o padding do botão */
+  border: none;
+  border-radius: 4px;
+  font-size: 14px; /* Tamanho da fonte do botão reduzido */
+  cursor: pointer;
+  align-self: center; /* Centraliza o botão */
+}
+
+.botao-editar:hover {
+  background-color: #45a049;
+}

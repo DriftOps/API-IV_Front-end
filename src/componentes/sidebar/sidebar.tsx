@@ -54,12 +54,6 @@ export default class Sidebar extends Component<{}, State> {
                       </a>
                     </li>
                     <li className="list">
-                      <a href="#" className="nav-link">
-                        <i className="bx bx-box"></i>
-                        <span className="link">Administradores</span>
-                      </a>
-                    </li>
-                    <li className="list">
                       <a href="Estatistica" className="nav-link">
                         <i className="bx bx-stats"></i>
                         <span className="link">Estatísticas</span>
@@ -85,13 +79,6 @@ export default class Sidebar extends Component<{}, State> {
                         <span className="link">Listagem</span>
                       </a>
                     </li>
-
-                  <li className="list">
-                      <a href="/Configuracao" className="nav-link">
-                        <i className="bx bx-cog"></i>
-                        <span className="link">Configurações</span>
-                      </a>
-                  </li>
                 </ul>
             </div>
           </div>
