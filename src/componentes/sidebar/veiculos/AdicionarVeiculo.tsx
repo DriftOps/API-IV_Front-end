@@ -7,26 +7,30 @@ const AdicionarVeiculo = () => {
   const [modelo, setModelo] = useState('');
   const [ano, setAno] = useState('');
   const [placa, setPlaca] = useState('');
+  const [checklist, setChecklist] = useState([
+    { id: 'pneus', label: 'Estado dos pneus', status: '' },
+    { id: 'motor', label: 'Situação do motor', status: '' },
+    { id: 'farois', label: 'Funcionamento dos faróis', status: '' },
+    { id: 'freios', label: 'Condição dos freios', status: '' },
+    { id: 'manutenção', label: 'Kit de manutenção', status: '' },
+    { id: 'limpeza', label: 'Condição geral de limpeza', status: '' },
+  ]);
   const navigate = useNavigate();
 
+  const handleStatusChange = (id: string, status: 'aprovado' | 'recusado') => {
+    setChecklist((prevChecklist) =>
+      prevChecklist.map((item) =>
+        item.id === id ? { ...item, status } : item
+      )
+    );
+  };
+
   const handleSalvar = () => {
-    // Criar o objeto do veículo
-    const novoVeiculo = { marca, modelo, ano, placa };
-
-    // Recuperar veículos armazenados no localStorage ou inicializar com os veículos fictícios
-    const veiculosFicticios = [
-      { id: 1, marca: 'Toyota', modelo: 'Corolla', ano: 2020, placa: 'ABC-1234' },
-      { id: 2, marca: 'Honda', modelo: 'Civic', ano: 2019, placa: 'XYZ-5678' },
-      { id: 3, marca: 'Ford', modelo: 'Fiesta', ano: 2018, placa: 'QWE-9012' }
-    ];
-
-    const veiculos = JSON.parse(localStorage.getItem('veiculos')) || veiculosFicticios;
-
-    // Adicionar o novo veículo à lista
-    veiculos.push(novoVeiculo);
-
-    // Salvar a lista atualizada no localStorage
-    localStorage.setItem('veiculos', JSON.stringify(veiculos));
+    // Simula o salvamento do veículo e checklist
+    console.log({
+      veiculo: { marca, modelo, ano, placa },
+      checklist,
+    });
 
     // Redireciona de volta para a lista de veículos
     navigate('/veiculos');
@@ -43,35 +47,58 @@ const AdicionarVeiculo = () => {
       <form>
         <div className="form-group">
           <label>Marca:</label>
-          <div className="input-container">
-            <input type="text" value={marca} onChange={(e) => setMarca(e.target.value)} />
-          </div>
+          <input type="text" value={marca} onChange={(e) => setMarca(e.target.value)} />
         </div>
         <div className="form-group">
           <label>Modelo:</label>
-          <div className="input-container">
-            <input type="text" value={modelo} onChange={(e) => setModelo(e.target.value)} />
-          </div>
+          <input type="text" value={modelo} onChange={(e) => setModelo(e.target.value)} />
         </div>
         <div className="form-group">
           <label>Ano:</label>
-          <div className="input-container">
-            <input type="number" value={ano} onChange={(e) => setAno(e.target.value)} />
-          </div>
+          <input type="number" value={ano} onChange={(e) => setAno(e.target.value)} />
         </div>
         <div className="form-group">
           <label>Placa:</label>
-          <div className="input-container">
-            <input type="text" value={placa} onChange={(e) => setPlaca(e.target.value)} />
-          </div>
+          <input type="text" value={placa} onChange={(e) => setPlaca(e.target.value)} />
         </div>
 
-        <div className="buttons-container">
-          <button type="button" onClick={handleSalvar} className="btn-salvar">Salvar</button>
-          <button type="button" onClick={handleVoltar} className="btn-voltar">
-            <img src="/img/voltar.png" alt="Voltar" />
-          </button>
-        </div>
+        <h3>Checklist de Veículo</h3>
+<div className="checklist-container">
+  {checklist.map((item) => (
+    <div key={item.id} className="checklist-item">
+      <label>{item.label}</label>
+      <div className="radio-group">
+        <label>
+          <input
+            type="radio"
+            name={item.id}
+            value="aprovado"
+            checked={item.status === 'aprovado'}
+            onChange={() => handleStatusChange(item.id, 'aprovado')}
+          />
+          Aprovado
+        </label>
+        <label>
+          <input
+            type="radio"
+            name={item.id}
+            value="recusado"
+            checked={item.status === 'recusado'}
+            onChange={() => handleStatusChange(item.id, 'recusado')}
+          />
+          Recusado
+        </label>
+      </div>
+    </div>
+  ))}
+</div>
+
+
+        <button type="button" onClick={handleSalvar}>Salvar</button>
+
+        <button type="button" onClick={handleVoltar} className="btn-voltar">
+          <img src="/img/voltar.png" alt="Voltar" />
+        </button>
       </form>
     </div>
   );

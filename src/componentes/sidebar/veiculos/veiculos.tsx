@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './veiculos.css';
 
 const Veiculos = () => {
-  const { index } = useParams(); // Pegando o índice da URL
+  const { id } = useParams<{ id: string }>(); // Pegando o ID da URL
   const [veiculo, setVeiculo] = useState({
     marca: '',
     modelo: '',
@@ -11,21 +12,28 @@ const Veiculos = () => {
     placa: ''
   });
 
-  const [veiculos, setVeiculos] = useState<any[]>([]); // Estado para armazenar os veículos
-
-  const navigate = useNavigate();
+  const [checklist, setChecklist] = useState([
+    { id: 1, label: 'Estado dos pneus', status: '' },
+    { id: 2, label: 'Situação do motor', status: '' },
+    { id: 3, label: 'Funcionamento dos faróis', status: '' },
+    { id: 4, label: 'Condição dos freios', status: '' },
+    { id: 5, label: 'Kit de manutenção', status: '' },
+    { id: 6, label: 'Condição geral de limpeza', status: '' },
+  ]);
 
   useEffect(() => {
-    // Recupera os veículos armazenados no localStorage
-    const veiculosSalvos = JSON.parse(localStorage.getItem('veiculos')) || [];
-    setVeiculos(veiculosSalvos);
+    // Simulando uma busca de dados do veículo pelo ID (aqui você pode buscar do backend)
+    const veiculosMock = [
+      { id: '1', marca: 'Toyota', modelo: 'Corolla', ano: '2020', placa: 'ABC-1234' },
+      { id: '2', marca: 'Honda', modelo: 'Civic', ano: '2019', placa: 'XYZ-5678' },
+      { id: '3', marca: 'Ford', modelo: 'Fiesta', ano: '2018', placa: 'QWE-9012' }
+    ];
 
-    // Converte o índice de string para número e encontra o veículo
-    const veiculoSelecionado = veiculosSalvos[parseInt(index, 10)];
+    const veiculoSelecionado = veiculosMock.find(v => v.id === id);
     if (veiculoSelecionado) {
       setVeiculo(veiculoSelecionado);
     }
-  }, [index]);
+  }, [id]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setVeiculo({
@@ -34,25 +42,25 @@ const Veiculos = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Atualiza o veículo na lista com base no índice
-    const veiculosAtualizados = [...veiculos];
-    veiculosAtualizados[parseInt(index, 10)] = { ...veiculo }; // Atualiza o veículo pelo índice
-
-    // Atualiza no localStorage
-    localStorage.setItem('veiculos', JSON.stringify(veiculosAtualizados));
-
-    // Atualiza o estado local
-    setVeiculos(veiculosAtualizados);
-
-    // Redireciona de volta para a página de listagem de veículos
-    navigate('/veiculos');  // Redireciona para a lista de veículos após salvar
+  const handleStatusChange = (itemId: number, status: string) => {
+    setChecklist((prevChecklist) =>
+      prevChecklist.map((item) =>
+        item.id === itemId ? { ...item, status } : item
+      )
+    );
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Veículo editado:', veiculo);
+    console.log('Checklist atualizado:', checklist);
+    // Adicione a lógica para salvar os dados
+  };
+
+  const navigate = useNavigate();
+
   const handleVoltar = () => {
-    navigate('/veiculos'); // Caso o usuário clique no "Voltar", redireciona para a lista de veículos
+    navigate(-1);
   };
 
   return (
@@ -100,9 +108,41 @@ const Veiculos = () => {
               required
             />
           </div>
+
+          <h3>Checklist de Veículo</h3>
+          <div className="checklist-container">
+            {checklist.map((item) => (
+              <div key={item.id} className="checklist-item">
+                <label>{item.label}</label>
+                <div className="radio-group">
+                  <label>
+                    <input
+                      type="radio"
+                      name={`checklist-${item.id}`}
+                      value="aprovado"
+                      checked={item.status === 'aprovado'}
+                      onChange={() => handleStatusChange(item.id, 'aprovado')}
+                    />
+                    Aprovado
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name={`checklist-${item.id}`}
+                      value="recusado"
+                      checked={item.status === 'recusado'}
+                      onChange={() => handleStatusChange(item.id, 'recusado')}
+                    />
+                    Recusado
+                  </label>
+                </div>
+              </div>
+            ))}
+          </div>
+
           <div className="button-container">
             <button type="submit">Salvar</button>
-            <button type="button" onClick={handleVoltar}>Voltar</button>
+            <button onClick={handleVoltar}>Voltar</button>
           </div>
         </form>
       </div>

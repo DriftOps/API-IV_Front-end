@@ -1,132 +1,187 @@
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f7f9fb;
-  margin: 0;
-  padding: 0;
-}
-
 .form-adicionar-container {
-  padding: 40px;
+  padding: 20px;
   max-width: 600px;
   margin: 50px auto;
-  background-color: #ffffff;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
   border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   text-align: center;
-  position: relative; /* Necessário para o botão de editar */
 }
 
 h2 {
+  text-align: center;
+  margin-bottom: 20px;
   font-size: 24px;
-  color: #333;
-  margin-bottom: 30px;
+  color: #08405b;
 }
 
 .form-group {
   margin-bottom: 20px;
   text-align: left;
-  font-size: 16px;
-  color: #333;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
-
-.input-container {
-  position: relative;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
 }
 
 .form-group input {
   width: 100%;
-  padding: 12px 20px;
-  border: 2px solid #ddd;
+  padding: 12px;
+  border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 16px;
-  transition: border-color 0.3s ease;
 }
 
-.form-group input:focus {
-  border-color: #0a4c71;
-  outline: none;
+.form-adicionar-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
-.buttons-container {
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #08405b;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.checklist-container {
   display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.checklist-item {
+  flex: 1 1 calc(50% - 20px); /* 50% de largura menos o gap */
+  min-width: 250px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.checklist-item label {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #08405b;
+  text-align: center;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.radio-group {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #08405b;
+  cursor: pointer;
+}
+
+.radio-group input {
+  margin-right: 10px;
+  transform: scale(1.5); /* Aumenta o tamanho dos botões de seleção */
 }
 
 button {
-  width: 48%;
+  width: 45%;
   padding: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-}
-
-.btn-salvar {
   background-color: #0a4c71;
   color: white;
   border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.btn-salvar:hover {
-  background-color: #083c4a;
+button:hover {
+  background-color: #f80000;
 }
 
 .btn-voltar {
-  background-color: #f0f0f0;
-  border: 2px solid #0a4c71;
+  position: absolute;
+  top: 120px;
+  left: 500px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 2px solid #08405b;
+  border-radius: 50%;
+  cursor: pointer;
   color: #0a4c71;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .btn-voltar:hover {
+  color: #08405b;
+  background-color: #f9f9f9;
+}
+
+
+button {
+  width: 45%;
+  padding: 12px;
   background-color: #0a4c71;
   color: white;
-}
-
-.btn-voltar img {
-  width: 20px;
-  height: 20px;
-}
-
-/* Estilizando o botão de editar */
-.btn-editar {
-  position: absolute;
-  top: 20px; /* Distância do topo do container */
-  right: 20px; /* Distância da borda direita */
-  padding: 10px 20px;
-  background-color: #ff9900;
   border: none;
-  color: white;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.btn-editar:hover {
-  background-color: #e68900;
+button:hover {
+  background-color: #f80000;
 }
 
-@media (max-width: 600px) {
-  .form-adicionar-container {
-    padding: 20px;
-    max-width: 90%;
-  }
+.btn-voltar {
+  position: absolute;
+  top: 120px;
+  left: 500px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 2px solid #08405b;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #0a4c71;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
 
-  .buttons-container {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  button {
-    width: 100%;
-  }
+.btn-voltar:hover {
+  color: #08405b;
+  background-color: #f9f9f9;
 }
