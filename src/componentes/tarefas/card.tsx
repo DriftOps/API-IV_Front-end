@@ -34,7 +34,6 @@ const Card = ({ title, tasks, onDropTask }) => {
         <div className="card" onDrop={handleDrop} onDragOver={handleDragOver}>
             <div className="card-header">
                 <h3>{title}</h3>
-                <button className="options-button">...</button>
             </div>
             <div className="card-content">
                 <input 
