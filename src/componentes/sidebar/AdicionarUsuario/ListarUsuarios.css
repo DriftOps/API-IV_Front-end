@@ -66,12 +66,12 @@
 }
 
 .botao-excluir {
-  background-color: #f44336;
+  background-color: #007BFF;
   color: white;
 }
 
 .botao-excluir:hover {
-  background-color: #e53935;
+  background-color: #007BFF;
 }
 
 .nenhum-funcionario {
